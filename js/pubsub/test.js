@@ -1,4 +1,4 @@
-const utils = require('./pubsub.js')
+const utils = require('./execrise.js')
 
 utils.on('test', (abc, efg) => {
   console.log(abc, efg)

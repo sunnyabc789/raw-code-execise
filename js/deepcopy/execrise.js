@@ -7,17 +7,19 @@ let obj = {
 };
 obj.obj = obj;
 
+//错了
 function clone(source, _map = new Map()) {
   if (typeof source === 'object') {
     if (_map.get(source)) return _map.get(source)
-    let temp = Array.isArray(source) ? [] : {}
-    _map.set(source, temp)
+    let target = Array.isArray(source) ? [] : {}
+    _map.set(source, target)
     for (let k in source) {
-      temp[k] = clone(source[k], _map)
+      target[k] = clone(source[k], _map)
     }
-    return temp
-  } 
-  return source 
+    return target
+  }
+
+  return source
 }
 
 console.log(clone(obj));
