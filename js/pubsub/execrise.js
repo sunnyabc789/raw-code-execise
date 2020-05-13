@@ -4,23 +4,22 @@ class Utils {
   }
 
   on(key, fn) {
+    if (!key || !fn) return
     this.calls.push({
-      key,
+      key, 
       fn
     })
   }
 
   emit() {
-    let key = Array.prototype.shift.apply(arguments, arguments)
-    const args = [].slice(arguments, 0)
-    if (!key) return
+    const key = Array.prototype.shift.apply(arguments,arguments)
     this.calls.forEach(i => {
       if (i.key === key) {
-        i.fn && i.fn.apply(i.fn, arguments)
+        i.fn.apply(this, arguments)
       }
     })
   }
 }
 
 const utils = new Utils()
-module.exports = utils 
+module.exports = utils
