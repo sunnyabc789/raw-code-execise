@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    .left {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      float: left;
+    }
+    .right {
+      height: 100%;
+      background-color: aqua;
+      display: flow-root
+    }
+  </style>
+</head>
+<!-- 宽度不指定 是100% -->
+<body>
+  <div style='height: 100%;'>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>
