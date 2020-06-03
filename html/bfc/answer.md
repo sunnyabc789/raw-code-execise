@@ -2,26 +2,33 @@
 
 https://blog.csdn.net/sinat_36422236/article/details/88763187
 
-一块独立的渲染区域
+一块独立的渲染区域 
+其实就是块盒子的排列方式 只是块盒子和根据不同属性 float position等 有不同的行为
+                        inline 盒子不会有这种行为
+触发BFC的说法不正确 一个div的布局 也是BFC 但不能说出来 说出来就说规范的定义模糊
 
 BFC的布局规则
-内部的Box会在垂直方向，一个接一个地放置。
+(1) 垂直方向上的距离由margin决定，属于同一个BFC的两个相邻的标签的margin会发生重叠  取了较大的一个值 实际上两个块级容器也会发生margin重叠 而不是累加 
+(2) 任何一个标签在你没有设置margin，padding，position,等改变其位置的属性是，他默认放在最左边，后面的一个接一个  BFC的区域不会与浮动的标签区域重叠
+(4) 计算BFC高度的时候，浮动子元素也参与计算
+(5) BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响外面的标签，反之亦然
 
-Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。
 
-每个盒子（块盒与行盒）的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
 
-BFC的区域不会与float box重叠。
+3、BFC能解决什么问题？（与上面的规则对应）
 
-BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+(1) 外边距重叠
 
-计算BFC的高度时，浮动元素也参与计算。
+(2) 自适应两栏或三栏布局  所谓的占满剩余空间  左侧 右侧不设置宽度 浮动 中间或右侧 overflow: auto;
 
-如何创建BFC
-1、float的值不是none。
-2、position的值不是static或者relative。
-3、display的值是inline-block、table-cell、flex、table-caption或者inline-flex
-4、overflow的值不是visible
-BFC的作用
-1.利用BFC避免margin重叠。
-一起来看一个例子：
+(3) 防止字体环绕  比如有个左浮动的盒子 包含文字的盒子不一定要右浮动 overflow: auto即可
+
+(4) 清除浮动
+
+1. overflow:auto
+2.float 不是none
+3.display flow-root
+4. position absolute或fixed
+5.display的值为inline-block、table-cell、table-caption、inline-flex
+
+然而并不完全这么认为 display: block的盒子 难道不是了吗 margin一样重叠了 满足第一条
