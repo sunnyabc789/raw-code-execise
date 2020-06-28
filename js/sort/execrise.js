@@ -14,10 +14,10 @@ console.log(insertSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
 //错了 * 2
 function binarysort(arr) {
-  for (let i = 0; i < arr.length; i ++) {
+  for (let i = 1; i < arr.length; i ++) {
     let left = 0
-    let right = i - 1
-    let mid 
+    let right = i - 1;
+    let mid = 0
     let temp = arr[i]
     while (left <= right) {
       mid = Math.floor((left + right) / 2)
@@ -27,7 +27,6 @@ function binarysort(arr) {
         left = mid + 1
       }
     }
-
     let j 
     for (j = i - 1; j >= left && arr[j] > temp; j --) {
       arr[j + 1] = arr[j]
@@ -42,7 +41,7 @@ console.log(binarysort([7, 3, 4, 5, 10, 7, 8, 2]))
 //注意交换时是 j + d = j
 //注意 j 不要重复声明
 function shellsort(arr) {
-  let x = arr.length
+  let x = arr.length 
   while (true) {
     x = Math.floor(x / 2)
     for (let d = 0; d < x; d ++) {
@@ -55,7 +54,7 @@ function shellsort(arr) {
         arr[j + x] = temp
       }
     }
-    if (x === 1) break
+    if (x === 1) break;
   }
   return arr
 }
@@ -66,10 +65,10 @@ console.log(shellsort([7, 3, 4, 5, 10, 7, 8, 2]))
 function quickSort(arr) {
   if (arr.length <= 1) return arr
   let pivot = Math.floor(arr.length / 2)
-  let less = []
-  let more = []
   let val = arr[pivot]
   arr.splice(pivot, 1)
+  let less = []
+  let more = []
   arr.forEach(i => {
     i < val ? less.push(i) : more.push(i)
   })
@@ -94,11 +93,11 @@ console.log(buddleSort([7, 3, 4, 5, 10, 7, 8, 2]))
 function directSelectSort(arr) {
   for (let i = 0; i < arr.length; i ++) {
     let min = arr[i]
-    let index = i
+    let index = i 
     for (let j = i + 1; j < arr.length; j ++) {
       if (arr[j] < min) {
-        index = j
         min = arr[j]
+        index = j
       }
     }
     arr[index] = arr[i]
@@ -108,9 +107,9 @@ function directSelectSort(arr) {
 }
 console.log(directSelectSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
-let len 
+let len
 function buildMaxHeap(arr) {
-  len = arr.length 
+  len = arr.length
   for (let i = Math.floor(len / 2); i >= 0; i --) {
     heapify(arr, i)
   }
@@ -120,10 +119,10 @@ function heapify(arr, i) {
   let left = 2 * i + 1
   let right = 2 * i + 2
   let largest = i 
-  if (left < len && arr[largest] < arr[left]) {
+  if (left < len && arr[left] > arr[largest]) {
     largest = left
   }
-  if (right < len && arr[largest] < arr[right]) {
+  if (right < len && arr[right] > arr[largest]) {
     largest = right
   }
   if (largest !== i) {
@@ -136,8 +135,8 @@ function heapSort(arr) {
   buildMaxHeap(arr)
 
   for (let i = arr.length - 1; i > 0; i --) {
-    len -- 
-    [arr[i], arr[0]] = [arr[0], arr[i]]
+    len --
+    [arr[0], arr[i]] = [arr[i], arr[0]]
     heapify(arr, 0)
   }
   return arr
@@ -155,10 +154,11 @@ function merge(left, right) {
   }
   return result.concat(left, right)
 }
+
 function mergeSort(arr) {
   if (arr.length <= 1) return arr
   let pivot = Math.floor(arr.length / 2)
-  let left = arr.slice(0, pivot)
+  let left = arr.slice(0 ,pivot)
   let right = arr.slice(pivot)
   return merge(mergeSort(left), mergeSort(right))
 }
@@ -167,13 +167,12 @@ console.log(mergeSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
 function getDigit(num, nth) {
   let ret = 0
-  while(nth--) {
-    ret = num % 10
+  while (nth --) {
+    ret = num % 10 
     num = Math.floor((num - ret) / 10)
   }
   return ret
 }
-
 
 function radixSort(arr) {
   let max = Math.floor(Math.log10(Math.max.apply(Math, arr)))
@@ -189,7 +188,7 @@ function radixSort(arr) {
     for (let i = 0; i < digitBuckets.length; i ++) {
       if (digitBuckets[i] && digitBuckets[i].length) {
         for (let j = 0; j < digitBuckets[i].length; j ++) {
-          arr[idx++] = digitBuckets[i][j]
+          arr[idx ++] = digitBuckets[i][j]
         }
       }
     }
