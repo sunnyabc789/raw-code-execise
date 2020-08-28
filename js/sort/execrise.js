@@ -48,7 +48,7 @@ console.log(insertSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
 //错了 * 2
 function binarysort(arr) {
-  for (let i = 0; i < arr.length; i ++) {
+  for (let i = 1; i < arr.length; i ++) {
     let left = 0
     let right = i - 1
     let mid 
@@ -104,6 +104,8 @@ function quickSort(arr) {
   const pivot = Math.floor(arr.length / 2)
   const mid = arr[pivot]
   arr.splice(pivot, 1)
+  let less = []
+  let more = []
   arr.forEach(i => {
     i < mid ? less.push(i) : more.push(i)
   })
@@ -142,7 +144,7 @@ function directSelectSort(arr) {
 // 与初始状态无关 一堆乌龟选基友 不稳定 快选堆希  n2
 console.log(directSelectSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
-let len 
+let len
 function buildMaxHeap(arr) {
   len = arr.length 
   for (let i = Math.floor(arr.length / 2); i >= 0; i --) {
