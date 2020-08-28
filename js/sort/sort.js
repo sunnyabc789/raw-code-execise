@@ -1,6 +1,34 @@
-//插排 直接插入
-// 时间复杂度 O(n^2) 最好时O(m) 最坏0(n^2) 所以稳定
-//空间复杂度 0（1）
+// 1.关于稳定性：
+
+// 不稳定：快选堆希（快速排序、选择排序、堆排序、希尔排序）
+// 稳    定：插冒归计基（简单插入排序、冒泡排序、归并排序、计数排序、基数排序）
+
+// 2.关于移动次数和关键字顺序无关的排序
+// 顺口溜：一堆（堆排序）海龟（归并排序）选（选择排序）基（基数排序）友
+
+
+// 排序方法        平均情况        最好情况        最坏情况        辅助空间        稳定性
+
+// 冒泡排序         O(n ^ 2)           O(n)              O(n ^ 2)            O(1)                稳定
+
+// 选择排序         O(n ^ 2)          O(n ^ 2)            O(n ^ 2)            O(1)              不稳定
+
+// 插入排序         O(n ^ 2)           O(n)              O(n ^ 2)            O(1)                稳定
+
+// 希尔排序O(n * log(n))~O(n ^ 2) O(n ^ 1.3)       O(n ^ 2)            O(1)              不稳定
+
+// 堆排序          O(n * log(n))     O(n * log(n))    O(n * log(n))       O(1)              不稳定
+
+// 归并排序       O(n * log(n))     O(n * log(n))    O(n * log(n))       O(n)                稳定
+
+// 快速排序       O(n * log(n))     O(n * log(n))      O(n ^ 2)            O(nlogn)              不稳定
+// 基数	n * k	n * k	n * k	n + k	稳定 k 基数大小  空间也是 kn
+
+// 基数排序 vs 计数排序 vs 桶排序
+
+// 这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：
+
+// 基数排序：根据键值的每位数字来分配桶 计数排序：每个桶只存储单一键值 桶排序：每个桶存储一定范围的数值
 
 
 
@@ -317,14 +345,15 @@ console.log(radixSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
 
 
-
+// 从前往后排序  arr[j - 1] 一定是已排好序中最小的那个了 如果有比他还小的 换位置
+// O(n2) O(1) 稳定
 
 function insertSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let temp = arr[i]
     let j
     //此处的大于小于 影响正序 倒序
-    for (j = i - 1; j < arr.length && arr[j] > temp; j--) {
+    for (j = i - 1; j >= 0 && arr[j] > temp; j--) {
       arr[j + 1] = arr[j]
     }
     arr[j + 1] = temp
@@ -411,7 +440,20 @@ function buddleSort(arr) {
 }
 console.log(buddleSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
-//错了
+// 这个虽然答案对了 但是不符合思路 这个思路是选择排序
+// function buddleSort(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] < arr[i]) {
+//         [arr[j], arr[i]] = [arr[i], arr[j]]
+//       }
+//     }
+//   }
+//   return arr
+// }
+// console.log(buddleSort([7, 3, 4, 5, 10, 7, 8, 2]), '===')
+
+// 上面那个是最优解
 function directSelectSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = arr[i]
@@ -431,6 +473,8 @@ console.log(directSelectSort([7, 3, 4, 5, 10, 7, 8, 2]))
 
 
 //错了 *2
+// 构建完大根堆后 对顶和最后一个元素交换 沉底 剩下的再构建大根堆 循环
+
 // 建立大根堆注意是从中间开始建
 // 弹出时 注意是从尾部开始 arr.legnth 堆尾巴
 let len

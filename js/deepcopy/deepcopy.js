@@ -1,3 +1,12 @@
+
+// JSON.stringify深度克隆对象;
+// 1.无法对函数 、RegExp等特殊对象的克隆;
+// 2.会抛弃对象的constructor, 所有的构造函数会指向Object;
+// 3.对象有循环引用, 会报错
+
+// 对象深度克隆实际上就是要兼容Array，RegExp，Date，Function类型；
+// 克隆函数可以用正则取出函数体和参数，再定义一个函数将取出来的值赋值进去
+
 //1.简单实现浅拷贝
 // 函数 正则 对象 等无法拷贝
 JSON.parse(JSON.stringify())

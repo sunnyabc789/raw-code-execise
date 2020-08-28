@@ -1,6 +1,8 @@
-let arr = 100000000
- arr = arr + ''
+var a = function () { this.b = 3; }
+var c = new a();
+a.prototype.b = 9;
+var b = 7;
+// a();
 
-let reg = /[0-9][0-9][0-9]/g
-console.log(arr.match(reg))
-console.log(arr.replace(/[0-9][0-9][0-9]/g, '$&,'))
+console.log(b);
+console.log(c.b);
