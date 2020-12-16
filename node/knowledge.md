@@ -72,7 +72,7 @@ JavaScript 语言自身只有字符串数据类型，没有二进制数据类型
 buffer可以和字符串相互转化
 定义buffer的三种方式
 
-let buf1 = Buffer.alloc(6);
+let buf1 = Buffer.alloc(6); //分配内存
 let buf2 = Buffer.from('珠峰');
 let buf3 = Buffer.from([65,66,67]);
 
