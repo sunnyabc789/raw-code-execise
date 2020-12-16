@@ -1,9 +1,41 @@
-// 交集
+// js 引用类型需要注意的地方
+// let a = { b: 1 } let c = a.b
+// a.b 和 c 不会有任何联动
 
+// let a = [1,2,3] let b = a
+// 引用赋值 操作了b a会受到影响
+
+
+// break 双重循环 break只退出当前的 不退出外层
+
+// 交集
+// 简易版
 const arr1 = [1, 2, 3, 4, 5, 8, 9], arr2 = [5, 6, 7, 8, 9];
 
 const intersection = arr1.filter(function (val) { return arr2.indexOf(val) > -1 })
 console.log(intersection) //[5, 8, 9]
+// leetcode 定义版
+var intersect = function (nums1, nums2) {
+  nums1 = nums1.sort((a, b) => a - b)
+  nums2 = nums2.sort((a, b) => a - b)
+
+  let result = []
+  let i = 0
+  let j = 0
+  while (i < nums1.length && j < nums2.length) {
+    if (nums1[i] === nums2[j]) {
+      result.push(nums1[i])
+      i++
+      j++
+    } else if (nums1[i] < nums2[j]) {
+      i++
+    } else if (nums2[j] < nums1[i]) {
+      j++
+    }
+  }
+  return result
+};
+
 
 // 并集
 
@@ -389,8 +421,7 @@ Math.floor(-3.3) // -4
 
 // 判断奇偶数
 const num = 5;
-!!(num & 1) // true
-!!(num % 2) // true
+let res = num % 2 == 0 ? "偶数": "奇数"
 
 // 判断数据类型
 function dataTypeJudge(val, type) {
@@ -429,6 +460,22 @@ function LRD(root, cb) {
 }
 
 
-
+// 方差
+function varianceArr(arr) {
+  let s,
+    ave,
+    sum = 0,
+    sums = 0,
+    len = arr.length;
+  for (let i = 0; i < len; i++) {
+    sum += Number(arr[i]);
+  }
+  ave = sum / len;
+  for (let i = 0; i < len; i++) {
+    sums += (Number(arr[i]) - ave) * (Number(arr[i]) - ave)
+  }
+  s = (sums / len).toFixed(4);
+  return s;
+};
 
 

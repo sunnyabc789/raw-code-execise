@@ -1,6 +1,6 @@
-import { ELEMENT_TEXT } from './constants';
+import { ELEMENT_TEXT } from "./constants";
 import { Update, UpdateQueue } from './updateQueue';
-import { scheduleRoot } from './scheduler';
+import { scheduleRoot } from './schedule';
 function createElement(type, config, ...children) {
     delete config.__self;
     delete config.__source;
@@ -22,7 +22,7 @@ class Component {
     }
     setState(payload) {
         this.internalFiber.updateQueue.enqueueUpdate(new Update(payload));
-        scheduleRoot();
+        scheduleRoot(); //这个地方都直接调度了 还搞个链表用在什么场景?
     }
 }
 Component.prototype.isReactComponent = true;

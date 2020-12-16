@@ -124,8 +124,11 @@ function updateClassComponent(currentFiber) {
     currentFiber.stateNode.internalFiber = currentFiber;
     currentFiber.updateQueue = new UpdateQueue();
   }
-  currentFiber.stateNode.state = currentFiber.updateQueue.forceUpdate(currentFiber.stateNode.state);
-  const newChildren = [currentFiber.stateNode.render()];
+  currentFiber.stateNode.state = currentFiber.updateQueue.forceUpdate(
+    currentFiber.stateNode.state
+  );
+  const newChildren = [currentFiber.stateNode.render()]; // 这里与原生有差异 子节点setState 父节点不会触发render 按这里 子节点setState 父节点也会触发
+  // 孙子元素setState 父和爷节点都不会触发render 叔叔 兄弟等也都不会触发render
   reconcileChildren(currentFiber, newChildren);
 }
 function updateHostText(currentFiber) {
@@ -259,10 +262,13 @@ export function useReducer(reducer, initialValue) {
       };
   }
   const dispatch = action => {
-      newHook.updateQueue.enqueueUpdate(
-          new Update(reducer ? reducer(newHook.state, action) : action)
-      );
-      scheduleRoot();
+    newHook.updateQueue.enqueueUpdate(
+      new Update(reducer ? reducer(newHook.state, action) : action)
+    );
+    // isBatchingUpdates控制 否则队列失去意义 然后 flushUpdate
+    /*E: \zf\zf\珠峰前端架构师培养计划\zf\珠峰前端架构师培养计划\专题课\zf\珠峰前端架构师培养计划\专题课\课件资料\zf\珠峰前端架构师培养计划\专题课\课件资料\projects20200419BAK\zf\珠峰前端架构师培养计划\专题课\课件资料\projects20200419BAK\9
+      .reacttilspdate.js;*/
+    scheduleRoot();
   }
   workInProgressFiber.hooks[hookIndex++] = newHook;
   return [newHook.state, dispatch];

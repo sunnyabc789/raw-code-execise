@@ -32,3 +32,5 @@ BFC的布局规则
 5.display的值为inline-block、table-cell、table-caption、inline-flex
 
 然而并不完全这么认为 display: block的盒子 难道不是了吗 margin一样重叠了 满足第一条
+
+普通div标签产生的盒子 认为未触发BFC 虽然部分满足BFC的特性和生成条件

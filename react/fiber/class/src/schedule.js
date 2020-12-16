@@ -21,7 +21,7 @@ export function scheduleRoot(rootFiber) {
            rootFiber.alternate = currentRoot;
            workInProgressRoot = rootFiber;
        } else {
-           workInProgressRoot = {
+           workInProgressRoot = {  //源码打断点结合此代码显示 setState会来到这里
                ...currentRoot,
                alternate: currentRoot
            }
@@ -115,7 +115,8 @@ function updateClassComponent(currentFiber) {
    }
    currentFiber.stateNode.state = currentFiber.updateQueue.forceUpdate(currentFiber.stateNode.state);
    const newChildren = [currentFiber.stateNode.render()];
-   reconcileChildren(currentFiber, newChildren);
+  //  if (currentFiber.stateNode.componentDidMount) currentFiber.stateNode.componentDidMount()
+     reconcileChildren(currentFiber, newChildren);
 }
 function updateHostText(currentFiber) {
     if (!currentFiber.stateNode) {
