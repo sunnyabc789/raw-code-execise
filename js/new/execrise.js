@@ -4,11 +4,19 @@
 // 返回新对象
 
 //错了 * 2
-function _new(O) {
-  let obj = {}
+function _new(O, ...args) {
+  const obj = {}
   obj.__proto__ = O.prototype
-  O.apply(obj, [].slice.call(arguments, 1))
+  O.apply(obj, args)
   return obj
+}
+
+function _new() {
+  const obj = {}
+  const Constructor = Array.prototype.shift.call(arguments)
+  obj.__proto__ = Constructor.prototype
+  Constructor.apply(obj, arguments)
+  return obj 
 }
 
 //测试用例

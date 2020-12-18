@@ -9,16 +9,15 @@ obj.obj = obj;
 
 //错了
 function clone(source, _map = new Map()) {
-  if (_map.get(source)) return _map.get(source)
   if (typeof source === 'object') {
-    let target = Array.isArray(source) ? [] : {}
-    for (let k in source) {
-      _map.set(source, target)
-      for (let k in source) {
-        target[k] = clone(source[k], _map)
-      }
+    if (_map.has(source)) return _map.get(source)
+    let copy = Array.isArray(source) ? [] : {}
+    _map.set(source, copy)
+    for (let key in source) {
+      copy[key] = clone(source[key], _map)
     }
-  }
-  return source
+    return copy
+  } 
+  return source;
 }
 console.log(clone(obj));

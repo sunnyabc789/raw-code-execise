@@ -1,25 +1,23 @@
 class Utils {
   constructor() {
-    this.calls = []
+    this.listeners = []
   }
 
-  on(key, fn) {
-    if (!key || !fn) return
-    this.calls.push({
-      key, 
-      fn
+  subscribe(key, fn) {
+    this.listeners.push({key, fn})
+  }
+
+  publish(key) {
+    let args = Array.prototype.slice.call(arguments, 1)
+    this.listeners.forEach((item) => {
+      if (key === item.key) item.fn.apply(null, args)
     })
   }
 
-  emit() {
-    const key = Array.prototype.shift.apply(arguments,arguments)
-    this.calls.forEach(i => {
-      if (i.key === key) {
-        i.fn.apply(this, arguments)
-      }
-    })
-  }
 }
-
 const utils = new Utils()
-module.exports = utils
+utils.subscribe("test", (abc, efg) => {
+  console.log(abc, efg);
+});
+
+utils.publish("test", "abc", "efg");
