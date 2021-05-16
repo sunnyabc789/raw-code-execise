@@ -268,7 +268,7 @@ let handler = {
     console.log(target,'===') // obj
     console.log(receiver, "receiver==="); // Proxy obj
     console.log("set", key, value); // set name 李四  // set age 24
-    return Reflect.set(target, key, value, receiver);
+    return Reflect.set(target, key, value, receiver);  //没有reciver也行
   }
 };
 let proxy = new Proxy(obj, handler);

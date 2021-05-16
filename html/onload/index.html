@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    window.onload = function () {
+      // 图片会阻塞这里
+      // 死循环会阻塞这里 defer async也会 甚至会阻塞gui线程 这里还体现了像素帧 图片加载出了一点 defer脚本下载完毕开始执行 gui线程停止渲染
+      // 一般来说onload触发代表着直接通过HTML引用的CSS，JS，图片资源已经完全加载完毕。
+      // 图片加载完毕 同步 deferjs asyncjs加载并执行完毕
+      console.log('onload===');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="./assets/a.png" alt="">
+</body>
+</html>
+<script>
+  // img不会阻塞这里
+  console.log('img not stophere===');
+
+  // 先here 再onload
+  console.log('script1===');
+
+  // 利用这两点性质 可以测量出白屏时间和onload时间
+  // 这里的第一行就是结束白屏时间了
+</script>
+<script src='./abc.js' async>
+</script>

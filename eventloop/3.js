@@ -20,3 +20,9 @@ setTimeout(function () {
 // next tick
 // setimmediate
 // settimeout
+
+let a = new ArrayBuffer(8)
+let b = Buffer.from([1,2,3])
+console.log(a.byteLength);
+console.log('===');
+console.log(b.length);

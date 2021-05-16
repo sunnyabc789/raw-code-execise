@@ -1,4 +1,3 @@
-const { wrap } = require("module")
 
 const PENDING = 'PENDING'
 const RESOLVED = 'RESOLVED'
@@ -75,7 +74,7 @@ class Promise {
   }
 
   catch(onRejected) {
-    this.then(null, onRejected)
+    return this.then(null, onRejected)
   }
 
   then(onFulfilled, onRejected) {
@@ -153,11 +152,23 @@ Promise.reject = function (data) {
   });
 };
 
-Promise.prototype.finally = function() {
-  return new Promise((res, rej) => {
-    this.then(res, rej);
-  })
-}
+Promise.prototype.finally = function (cb) {
+  return this.then(
+    (data) => {
+      // cb()
+      // return cb() //有return 和没有 有区别  但是无法满足 会出现123
+      return Promise.resolve(cb()).then(() => data); //确保cb中的promise执行完成
+    },
+    (err) => {
+      // cb()
+      // return cb() //有return 和没有 有区别
+      return Promise.reject(cb()).then(() => {
+        throw err;
+      }); //确保cb中的promise执行完成
+    }
+  );
+};
+
 
 function isPromise(v) {
   if (((typeof x === 'object' && x !== null) || typeof x === 'function') && (x.then === 'function')) {
@@ -172,7 +183,7 @@ Promise.all = function(promises) {
     let idx = 0;
     function processData(value, index) {
       if (promises.length === idx ++) {
-        return resolve(result)
+        return res(result)
       }
       result[index] = value 
     }
@@ -238,4 +249,39 @@ function co(it) {
   })
 }
 
+//  3依然会打出来  打断点可以看到 状态变成resolve了
+new Promise((resolve,reject)=>{
+reject(1)
+}).catch(()=>{
+console.log(2)
+}).then(
+    ()=>console.log(3),
+    (v)=>console.log(v)
+)
+// 2 -> 3
 
+  //  if (this.status === REJECTED) {
+  //    setTimeout(() => {
+  //      try {
+  //        let x = onRejected(this.reason);
+  //        resolvePromise(promise2, x, resolve, reject);
+  //      } catch (e) {
+  //        reject(e);
+  //      }
+  //    }, 0);
+  //  }
+  // 这里的 resolvePromise 把catch的resolve调用了
+
+  new Promise((resolve, reject) => {
+    reject(1);
+  })
+    .catch(() => {
+      console.log(2);
+      throw TypeError("test");
+    })
+    .then(
+      () => console.log(3),
+      (v) => console.log(4)
+    );
+
+    // 2 -> 4 如果是 console.log(v) 错误会被抛出
