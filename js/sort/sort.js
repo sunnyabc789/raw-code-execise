@@ -2,8 +2,9 @@
 
 // 不稳定：快选堆希（快速排序、选择排序、堆排序、希尔排序）
 // 稳    定：插冒归计基（简单插入排序、冒泡排序、归并排序、计数排序、基数排序）
+// 对某个数字排序后会不会改变其他关键字的顺序;
 
-// 2.关于移动次数和关键字顺序无关的排序
+// 2.关于移动次数和关键字顺序无关的排序 和初始状态无关
 // 顺口溜：一堆（堆排序）海龟（归并排序）选（选择排序）基（基数排序）友
 
 // nlogn  前面的n可以省略
@@ -571,3 +572,36 @@ function radixSort(arr) {
   return arr
 }
 console.log(radixSort([7, 3, 4, 5, 10, 7, 8, 2]))
+
+function fib(n) {
+  if (n == 1 || n == 2) {
+    return 1;
+  } else {
+    return fib(n - 1) + fib(n - 2);
+  }
+}
+
+function fib2(n) {
+  var res = [1, 1];
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+  for (var i = 2; i < n; i++) {
+    res.push(res[i - 1] + res[i - 2]);
+  }
+  return res[n - 1];
+}
+
+var cache = [];
+function fib(n){        
+    if(cache[n] !== undefined){               
+           return cache[n];
+    }          
+    if(n <= 2){               
+          cache[n] = 1;
+          return 1;
+    }    
+    cache.push(fib(n - 1) + fib(n - 2));
+    return cache[n];
+}
+console.log(fib(5));//5
