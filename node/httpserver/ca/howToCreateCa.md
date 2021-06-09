@@ -1,4 +1,4 @@
-1.产生证书
+1.产生证书  (直接复制)
  生成一个文件名字：v3.ext
 
  
@@ -15,6 +15,7 @@
 10
 11
 12
+```
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
@@ -27,7 +28,7 @@ DNS.1 = domain.com
 # IP address
 IP.1 = 192.168.2.221
 IP.2 = 127.0.0.1
-　
+```
 
 1
 2
