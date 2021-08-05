@@ -35,6 +35,40 @@ limit(2, [1000, 1000, 1000, 1000], timeout).then((res) => {
 });
 
 
+export default class Scheduler {
+  constructor(count) {
+      this.count = count
+      this.doingTasks = []
+      this.tasks = []
+  }
+
+  doTask(array, iterateFunc) {
+      let i = 0;
+      const enqueue = () => {
+        if (i === array.length) {
+          return Promise.resolve();
+        }
+        const task = Promise.resolve().then(() => iterateFunc(array[i++]));
+        this.tasks.push(task);
+        const doing = task.then(() =>
+          this.doingTasks.splice(this.doingTasks.indexOf(doing), 1)
+        );
+        this.doingTasks.push(doing);
+        const res =
+          this.doingTasks.length >= this.count ? Promise.race(this.doingTasks) : Promise.resolve();
+        return res.then(enqueue);
+      };
+      return enqueue().then(() => Promise.all(this.tasks));
+  }
+}
+
+export function getInstance(count = 5) {
+  return new Scheduler(count)
+}
+
+
+
+
 
 
 export default class Scheduler {
@@ -44,18 +78,18 @@ export default class Scheduler {
     this.maxFunNum = count;  //最大执行任务数
   }
 
-  add(promiseMaker) {
+  add(task) {
     if (this.doingFuncs.length < this.maxFunNum) {
-      this.run(promiseMaker);
+      this.run(task);
     } else {
-      this.funcs.push(promiseMaker);
+      this.funcs.push(task);
     }
   }
 
-  run(promiseMaker) {
-    let arrayLength = this.doingFuncs.push(promiseMaker);
+  run(task) {
+    let arrayLength = this.doingFuncs.push(task);
     let index = arrayLength - 1;
-    promiseMaker().then(() => {
+    task[0](task[1]).then(() => {
       this.doingFuncs.splice(index, 1);
       if (this.funcs.length > 0) {
         this.run(this.funcs.shift());
@@ -65,7 +99,7 @@ export default class Scheduler {
 
   addTask(taskList, func) {
       taskList.map(i => {
-          this.add(func.bind(null, i))
+          this.add([func, i])
       })
   }
 }
@@ -73,14 +107,3 @@ export default class Scheduler {
 export function getInstance(count = 5) {
   return new Scheduler(count)
 }
-
-const addTask = (time, text) => {
-  const promiseMaker = () => new Promise(resolve => {
-    setTimeout(() => {
-      console.log(text);
-      resolve();
-    }, time);
-  });
-
-  scheduler.add(promiseMaker);
-};
