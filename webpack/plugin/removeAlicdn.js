@@ -9,6 +9,9 @@ class RemoveAlicdnPlugin {
         // tap里的是事件名 随意
         compiler.hooks.shouldEmit.tap('RemoveAlicdn', (compilation) => {
             console.log(compilation.assets['css/app.css'].children[0]._value.includes('alicdn'),'1===')
+
+            const publicUrl = this.options['process.env.OSSURL'] + '/alog-ware/cnbp-erp/201.0.1/public'
+            compilation.assets['css/app.css'].children[0]._value = compilation.assets['css/app.css'].children[0]._value.replace(/(at.alicdn.com\/t\/)/g, publicUrl)
         })   
 
         // 这个写法感觉更好
