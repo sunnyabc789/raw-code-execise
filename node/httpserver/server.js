@@ -5,6 +5,7 @@ const fs = require("fs");
 const server = http.createServer((req, res) => {
   let pathname = req.url;
   if (pathname === "/") {
+    // 可以发图片 文本 但是音频到了移动端用这个就不行了 express的static就可以 必须搞懂 记录到这里
     fs.readFile(path.resolve(__dirname + "/index.html"), (err, data) => {
       res.end(data);
     });
