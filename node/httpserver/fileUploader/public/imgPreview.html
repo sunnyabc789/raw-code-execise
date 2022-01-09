@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <title>图片预览</title>
+</head>
+
+<body>
+    <h1>图片预览</h1>
+    <input type="file" id="uploadFileInput" name="upload" />
+    <br>
+    <!-- 进度条 -->
+    <progress id="uploadProgress" min="0" max="100" value="0">0</progress>
+    <br>
+    <button id="uploadSubmitInput">上传</button>
+    <br>
+    <br>
+    <a href="/uploads">点这里查看服务器上传文件列表</a>
+    <br>
+    <br>
+</body>
+<script>
+    window.onload = function () {
+
+        // 变量
+        var fileList = null; // 要上传的文件列表
+        var action = '/uploadfile'; // 请求地址
+
+        // 获得 dom 
+        var uploadFileInput = document.querySelector('#uploadFileInput');
+        var uploadSubmitInput = document.querySelector('#uploadSubmitInput');
+        var uploadProgress = document.querySelector('#uploadProgress');
+
+        // 监听文件上传 input 表单 onchange 事件
+        uploadFileInput.addEventListener('change', function (e) {
+            console.log('change', e);
+
+            // 拿到文件路径 C:\fakepath\gamersky_06origin_11_201781920558FE.jpg
+            var path = e.currentTarget.value;
+            console.log('path', path);
+
+            // 拿到文件列表
+            fileList = e.currentTarget.files;
+            console.log('fileList', fileList);
+
+            if (typeof FileReader === 'undefined') {
+                alert('该浏览器版本过低，不支持 FileReader');
+                return;
+            }
+
+            // 设置接受的类型
+            var acceptedTypes = {
+                'image/png': true,
+                'image/jpeg': true,
+                'image/gif': true
+            };
+
+            if (acceptedTypes[fileList[0].type] !== true) {
+                alert('文件类型不支持');
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var image = new Image();
+                image.src = e.target.result;
+                image.width = 100;
+                document.body.appendChild(image);
+            };
+            reader.readAsDataURL(fileList[0]);
+        });
+
+        // 监听确认上传点击事件
+        uploadSubmitInput.addEventListener('click', function (e) {
+            console.log('确认上传');
+
+            // 判断是否支持 formData
+            if (!window.FormData) {
+                console.error('该浏览器版本过低，不支持 formData!');
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append('upload', fileList[0]); // 建立一个upload表单项，值为上传的文件
+
+            // 建立 ajax 请求
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', action); // 打开 xhr
+            // 加载完成回调
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('上传成功');　　　　
+                    alert('上传成功');
+                } else {　　　　　　
+                    console.error('出错了');　
+                    alert('出错了');　　　
+                }
+            };
+            // 进度条回调
+            xhr.upload.onprogress = function (e) {
+                console.log('xhr.upload.onprogress', e);
+                // 判断长度是否是可计算的
+                if (e.lengthComputable) {
+                    // 计算长度百分比
+                    var progressPercent = (event.loaded / event.total * 100 | 0);
+                    // 更新进度条 dom
+                    uploadProgress.value = progressPercent;
+                }
+            };
+            // 开始请求
+            xhr.send(formData);
+        });
+    };
+</script>
+
+</html>

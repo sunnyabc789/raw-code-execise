@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>拖拽上传</title>
+    <style>
+        #holder {
+            width: 300px;
+            min-height: 300px;
+            border: 10px dashed #ccc;
+        }
+
+        #holder.hover {
+            border: 10px dashed #0c0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>拖拽上传</h1>
+    <div id="holder">
+
+    </div>
+</body>
+<script>
+    if ('draggable' in document.createElement('span')) {
+        var holder = document.querySelector('#holder');
+        holder.addEventListener("dragstart", function (event) {
+            console.log('dragstart');
+        }, false);
+        holder.addEventListener("drag", function (event) {
+            console.log('drag');
+        }, false);
+        holder.addEventListener("dragenter", function (event) {
+            console.log('dragenter');
+        }, false);
+        holder.addEventListener("dragleave", function (event) {
+            console.log('dragleave');
+        }, false);
+        holder.addEventListener("dragover", function (event) {
+            event.preventDefault();
+            console.log('dragover');
+        }, false);
+        holder.addEventListener("dragend", function (event) {
+            console.log('dragend');
+        }, false);
+        holder.addEventListener("drop", function (event) {
+            // drop 事件默认会在浏览器中打开文件
+            event.preventDefault();
+            console.log('drop');
+        }, false);
+        holder.addEventListener("dropend", function (event) {
+            // drop 事件默认会在浏览器中打开文件
+            event.preventDefault();
+            console.log('dropend');
+        }, false);
+    }
+</script>
+
+</html>
