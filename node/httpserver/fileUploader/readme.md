@@ -22,3 +22,7 @@ nohup 命令对 server.js 进程做了三件事
 
 
 pkill node   //关闭 node 服务
+
+
+nginx限制文件上传大小1M
+设置 client_max_body_size 10m;
