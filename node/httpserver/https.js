@@ -21,6 +21,19 @@ const httpsServer = https.createServer(credentials, (req, res) => {
         res.end(data);
       });
     }
+
+    if (pathname === "/index.js") {
+      res.writeHead(200, {
+        'Set-Cookie': ['myCookie=test;SameSite=None;Secure;domain=.domain.com']
+      });
+    //   res.writeHead(200, [
+    //     ['Set-Cookie', 'mycookie1=value1'],
+    //     ['Set-Cookie', 'mycookie2=value2']
+    // ]);
+      fs.readFile(path.resolve(__dirname + "/index.js"), (err, data) => {
+        res.end(data);
+      });
+    }
 });
 
 const SSLPORT = 8001;
