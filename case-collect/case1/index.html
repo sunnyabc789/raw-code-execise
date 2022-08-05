@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="aplus-waiting" content="MAN">
+    <link rel="icon" type="image/png" href="https://img.alicdn.com/tfs/TB1CZ0ARpXXXXX7XXXXXXXXXXXX-32-32.png">
+    <title>菜鸟履行工作台</title>
+    <link href="https://cn.alicdn.com/fulfil-focp/fops-view/0.0.185/walle-extends.css" rel="stylesheet" charset="utf-8">
+    <script>
+        if(
+                document.domain === 'localhost' ||  // 域名等于 localhost
+                document.domain === '127.0.0.1' ||  // 域名等于 127.0.0.1
+                location.port === '7001'        ||  // 端口等于 7001
+                location.href.indexOf('local=true') > -1  // 或者url 中增加了 local=true 的配置
+        ) {
+            //以上三种情况，只要满足一种，页面资源请求都走本地
+            var basePath = './';
+            // var basePath = "http://fops-local.cainiao.com:9000/build/"
+            // var apiPath = "http://fops-local.cainiao.com:7001";
+        } else { // 否则请求 cdn 数据
+            var basePath = 'https://cn.alicdn.com/fulfil-focp/fops-view/0.0.185/';
+        }
+        var env = 4;
+    </script>
+</head>
+<body><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=0bb6dd1816592679488143559eff43&asid=AQAAAABsa+Zi/4FWcQAAAADOjbuVK/biOQ==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+<script src="//g.alicdn.com/evil-genius/P0/index.js"></script>
+<div id="root"></div>
+
+<!--debug 模式(开发环境可以打开，方便排错，正式环境请关闭，打开下面的发布模式)-->
+<!--script src="https://cn.alicdn.com/wallegroup/walle-framework/1.3.1/walle.debug.spa.js"></script-->
+<!--script src="https://cn.alicdn.com/fulfil-focp/fops-view/0.0.1/walle-extends.debug.js"></script-->
+<!--debug end-->
+
+<!--发布 模式-->
+<script src="https://cn.alicdn.com/wallegroup/walle-framework/1.3.1/walle.spa.js"></script>
+<script src="https://cn.alicdn.com/fulfil-focp/fops-view/0.0.185/walle-extends.js"></script>
+<!--发布 end-->
+<script>
+    walle.start({
+    loader: {
+        type: "json",
+        css: !1
+    },
+    animationRouter: {},
+    router: {
+        root: "root",
+        rootPath: basePath + "template/screen",
+        routerMap: [{
+            path: "/detail/basic/:id",
+            url: basePath + "template/screen/detail/basic/index.json"
+        }, {
+            path: "/detail/complex/:id",
+            url: basePath + "template/screen/detail/complex/index.json"
+        }, {
+            path: "/detail/more-info/:id",
+            url: basePath + "template/screen/detail/more-info/index.json"
+        }],
+        routeType: "hashHistory",
+        defaultPage: {
+            path: "/",
+            url: basePath + "template/screen/dashboards/list/index.json"
+        },
+        errorPage: {
+            url: basePath + "template/screen/exception/404/index.json"
+        },
+        screenAccelerate: {
+            layout: {
+                default: {
+                    slot: ["content", "defaultTaskSlot"],
+                    component: [{
+                        tag: "Header",
+                        src: "../screen/header"
+                    }],
+                    accCount: 3
+                }
+            }
+        },
+        layoutConfig: {
+            default: {
+                layout: basePath + "template/layout/index.json"
+            }
+        }
+    },
+    ui: {
+        components: walleExtends.ui
+    },
+    plugins: walleExtends.plugins,
+    view: {}
+});
+
+</script>
+<!-- <script src="https://cn.alicdn.com/fulfil-focp/fops-view/0.0.185/start.js"></script> -->
+</body>
+</html>

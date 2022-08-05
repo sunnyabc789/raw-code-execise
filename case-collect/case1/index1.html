@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+    .header{
+        width: 100%;
+        height: 56px;
+        background-color: red;
+    }
+    .top{
+        position: fixed;
+        top: 56px;
+        background-color: blue;
+    }
+    .bottom{
+        min-height: calc(100vh - 87px);
+        height: calc(100vh - 82px);
+        margin-top: 32px;
+        background-color: orange;
+        overflow-y: auto;
+    }
+    .inner {
+        height: calc(100vh - 87px);
+    }
+</style>
+<body>
+    <div class="header">
+        header
+    </div>
+    <div>
+        <div class="top">
+            top
+        </div>
+        <div class="bottom">
+           <div>
+            <div class='inner'>
+                <iframe width="100%" height="100%" src="http://localhost:3000/case1/index.html#/" frameborder="0"></iframe>
+            </div>
+           </div>
+        </div>
+    </div>
+</body>
+</html>
