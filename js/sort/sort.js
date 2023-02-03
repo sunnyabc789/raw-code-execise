@@ -86,6 +86,9 @@ function binarySort(arr) {
       mid = Math.floor((left + right) / 2)
       //
       if (arr[mid] > temp) {
+        // 舍弃中间值原因 
+        // 1.中间值已经参与了计算了 
+        // 2.右指针-1 最终可能是个-1  这样可以保证左指针为最终目标
         right = mid - 1
       } else {
         left = mid + 1
