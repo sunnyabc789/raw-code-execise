@@ -14,6 +14,7 @@ function setProp(dom, key, value) {
         dom[key.toLowerCase()] = value;//没有用合成事件
     } else if (key === 'style') {
         if (value) {
+            // 读会触发重排  多次写不会重复触发重绘
             for (let styleName in value) {
                 dom.style[styleName] = value[styleName];
             }
