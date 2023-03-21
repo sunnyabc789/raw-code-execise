@@ -7,6 +7,8 @@ const server = http.createServer((req, res) => {
   if (pathname === "/") {
     // 可以发图片 文本 但是音频到了移动端用这个就不行了 express的static就可以 必须搞懂 记录到这里
     // 答复：1.本质是stream  2.stream是很底层的api 尝试用pipe   readstream.pipe(res) 失败了
+    // res.setHeader('Set-Cookie', 'XSRF_TOKEN=abc;')
+    // res.setHeader('Set-Cookie', 'FE_XSRF_TOKEN=efg;')
     fs.readFile(path.resolve(__dirname + "/index.html"), (err, data) => {
       res.end(data);
     });
