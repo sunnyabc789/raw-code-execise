@@ -28,3 +28,42 @@ Node.js 20 还提供了一个 process.permission.has API，可以用来帮助我
 process.permission.has('fs.write')
 process.permission.has('fs.write', '/Users/bytedance/Desktop/learn/')
 返回是否拥有该目录操作权限
+
+### 子进程的权限
+Node.js 中的 child_process 为我们提供了创建子进程的能力，我们可以在这个子进程中执行任意的 Shell 命令。
+这个命令也是相当危险的  命令注入漏洞
+```
+const { spawn } = require('node:child_process');
+
+const ls = spawn('ls', ['/Users/bytedance/Desktop/learn/Node.js']);
+
+ls.stdout.on('data', (data) => {
+  console.log(`输出如下：\n${data}`);
+});
+
+ls.stderr.on('data', (err) => {
+  console.error(`失败: ${err}`);
+});
+
+ls.on('close', (code) => {
+  console.log(`子进程推出 ${code}`);
+});
+```
+但如果我们加上了 --experimental-permission 标志，执行命令的时候就会报错：
+
+我们必须要加上 --allow-child-process 才能正常允许执行子进程。另外，如果子进程中读取到了一些文件目录，我们依然需要加上 --allow-fs-read 才能执行成功
+node --experimental-permission --allow-child-process --allow-fs-read=/Users/bytedance/Desktop/learn/ child17.js
+
+### worker_threads 权限
+worker_threads 可以让我们创建多线程，然后在不同的线程中并行执行代码，一般我们会开多个 Workers 来执行一些 CPU 密集型的操作。
+如果我们启用了 --experimental-permission 标志，代码执行就会报错：
+如果要使用 worker_threads ，比如要添加一个 --allow-worker 的标志，另外它还需要通过 --allow-fs-read 来告诉它哪些目录下的文件是允许被执行的，所以我们执行下面的代码：
+
+目前 Node.js 的权限模型还是相当初级的阶段，还有很多能力需要完善，比如可以限制服务的网络请求白名单，这样就可以避免 SSRF 漏洞等等，而且现在还在实验阶段，大家尽量不要在生产环境使用。
+
+ node --experimental-permission --allow-worker --allow-fs-read=/Users/bytedance/Desktop/learn/ threads17.js
+https://nodejs.org/en/blog/announcements/v20-release-announce
+https://nodejs.org/api/permissions.html#process-based-permissions
+https://nodejs.org/en/docs/guides/security
+https://betterprogramming.pub/6-major-features-of-node-js-20-741a206cb84b
+
