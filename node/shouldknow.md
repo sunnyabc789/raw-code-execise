@@ -21,3 +21,10 @@ node --experimental-permission xxx.js  则开启权限模式
  命令行命令 
 --allow-fs-read：允许读取某个路径下的文件，多个可以用逗号分隔；
 --allow-fs-write：允许操作某个路径下的文件，多个可以用逗号分隔；
+
+## 权限检查
+Node.js 20 还提供了一个 process.permission.has API，可以用来帮助我们在运行时检查程序是不是拥有指定的权限。我们使用刚刚的例子，在下面增加一些判断权限的代码：
+返回是否拥有api操作权限
+process.permission.has('fs.write')
+process.permission.has('fs.write', '/Users/bytedance/Desktop/learn/')
+返回是否拥有该目录操作权限
