@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .viewport {
+  width: 50%;
+  overflow: hidden;
+  height: 200px;
+}
+/* 容器元素 */
+.container {
+  overflow: auto;
+  height: 100%;
+}
+/* 粘性约束元素 */
+.article {
+  margin-bottom: 10px;
+}
+/* sticky 元素 */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  padding: 5px 0;
+  background-color:#fff;
+}
+    </style>
+</head>
+<body>
+    <div class="viewport">
+        <!-- 容器元素 -->
+        <div class="container">
+            <div class="article">...</div>
+            <div class="article">...</div>
+          <!-- 文章:粘性约束元素 -->
+          <div class="article">
+            <div class="sticky-header">
+              <h2>彻底理解粘性定位 - position: sticky</h2>
+              <div class="options">
+                <button>转发</button>
+                <button>点赞</button>
+              </div>
+            </div>
+            <!-- 生效高度 -->
+            <div style='height:10000px' class="article-content">...</div>
+        </div>
+        <!-- 文章 无用高度-->
+        <div style="height:10000px" class="article">...</div>
+      </div>
+</body>
+</html>
