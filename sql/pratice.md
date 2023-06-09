@@ -27,3 +27,7 @@ select url, pv_id, datediff(TO_DATE(MAX(log_second), 'yyyymmddhhmiss'),TO_DATE(M
 多值列拆多行
 TRANS_ARRAY(8,',',pid, uid, username, type, log_second, url, title, pv_id, c1) as (pid, uid, username, type, log_second, url, title, pv_id, c1)
  
+
+3.系统参数
+${bdp.system.bizdate}
+系统参数，格式为yyyymmdd，日常调度实例定时时间的前一天（年月日）。节点每天自动调度实例定时时间年月日减1天。
