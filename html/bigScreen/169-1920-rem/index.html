@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link  type="text/css" rel="styleSheet"  href='./index.css'></style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <div class='first-line'>第一行(固定16px 任何宽度下)</div>
+            <div style="font-size: .16rem;">橙色为内容区域,绿色适配用的空隙,16:9时不会出现绿色</div>
+            <div class='first-box-line'>
+                <div 
+                    class='first-line-box first-line-box1'
+                    style="font-size: .12rem;"
+                >
+                    <div
+                    >
+                        字体: 12px(1920宽时)
+                    </div>
+                    <div>字体最小12px,小于12px时会保持12px,留意文字换行,字体大小</div>
+                </div>
+                <div 
+                    class='first-box-gap'
+                >
+                    <div>宽度210px(1920宽时)</div>
+                    <div>字体大小16px(1920宽时)</div>
+                    <div>这里可以用margin</div>
+                </div>
+                <div 
+                    class='first-line-box first-line-box2'
+                    style="font-size: .18rem;"
+                >
+                    <div
+                    >
+                        字体: 18px(1920宽时)
+                    </div>
+                    <div>字体最小12px,小于12px时会保持12px,留意文字换行,字体大小</div>
+                </div>
+                <div class='first-box-gap'>
+                    <div>宽度210px(1920宽时)</div>
+                    <div>字体大小16px(1920宽时)</div>
+                    <div>这里可以用margin</div>
+                </div>
+                <div 
+                    class='first-line-box first-line-box3'
+                    style="font-size: .24rem;"
+                >
+                    <div
+                    >
+
+                        字体: 24px(1920宽时)
+                    </div>    
+                    <div>字体最小12px,小于12px时会保持12px,留意文字换行,字体大小</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // 这地方不要放全局 离开页面记得删掉事件 根字体
+    let that = this
+    let container = document.getElementById('container')
+    let docEl = document.documentElement,
+      resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+      recalc = function () {
+        let clientWidth = docEl.clientWidth
+        let clientHeight = docEl.clientHeight
+        if (!clientWidth) return
+        docEl.style.fontSize = (clientWidth / 1920) * 100 + 'px'
+
+        /* 大于16:9时不能使用该垂直居中 */
+        const ratio = 16 / 9
+        const actualRatio = clientWidth / clientHeight
+
+        if (actualRatio > ratio) {
+            container.setAttribute('style', 'position: static;transform: none') 
+        } else {
+            container.setAttribute('style', 'position: relative;transform: translateY(-50%)') 
+        }
+
+      }
+      
+    // if (!document.addEventListener) return
+    window.addEventListener(resizeEvt, recalc, false)
+    recalc()
+</script>

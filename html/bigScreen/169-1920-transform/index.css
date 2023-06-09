@@ -1,0 +1,47 @@
+/* 注意逗号 */
+html,body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: green;
+}
+#container {
+  width: 1920px;
+  height: 1080px;
+  /* width: 100%;
+  height: 100%; */
+  background: orange;
+  /* margin: 0 auto; */
+  /*水平居中*/
+
+  /* position: relative;
+  top: 50%; */
+  /*偏移*/
+
+  /* transform: translatey(-50%); */
+}
+/* 不建议用flex自动分配 可能会导致不可控 */
+.first-line-box {
+  display: inline-block;
+  background: #10215a;
+  width: 500px;
+  height: 200px;
+  color: red;
+  /* 消除inline-block的水平 垂直间隙 */
+
+  vertical-align: top;
+}
+/* 消除inline-block的水平 垂直间隙 */
+.first-box-line {
+  font-size: 0;
+}
+.first-box-gap {
+  display: inline-block;
+  width: 210px;
+  height: 200px;
+  font-size: 16px;
+  /* 消除inline-block的水平 垂直间隙 */
+
+  vertical-align: top;
+}

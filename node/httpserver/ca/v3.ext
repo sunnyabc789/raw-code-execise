@@ -1,0 +1,12 @@
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+extendedKeyUsage = serverAuth
+ 
+[alt_names]
+ 
+DNS.1 = domain.com
+# IP address
+IP.1 = 192.168.2.221
+IP.2 = 127.0.0.1

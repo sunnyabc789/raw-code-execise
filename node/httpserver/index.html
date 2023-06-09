@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <a onclick="handle()">test</a>
+  <form method="GET" action="http://testabc.test:3001/test">
+    <input type="text" name="id">
+    <input type="submit" value="Submit">
+</form> -->
+完蛋 
+<iframe src='http://testabc.test:3001'></iframe>
+<!-- <a href='http://testabc.test:3001'>恶意链接</a> -->
+</body>
+</html>
+<script>
+  function handle() {
+    // console.log('here==')
+    fetch('http://testabc.test:3001/test')
+  }
+  var a = function () { this.b = 3; }
+  var c = new a();
+  a.prototype.b = 9;
+  var b = 7;
+  // a();
+
+  console.log(b);
+  console.log(c.b);
+</script>

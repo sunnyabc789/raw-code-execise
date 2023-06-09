@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .out {
+      background: blue;
+      width: 100%;
+      height: 100%;
+    }
+
+    .f {
+      background: red;
+      /* 两个块级的 margin会重叠 20 两个inline的 会累加 40 */
+      display: inline;
+      margin: 20px;
+    }
+
+    .r {
+      margin: 20px;
+      display: inline;
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="out">
+    <div class="f">top</div>
+    <div class="r">bottom</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+- js number有大小限制
+- 如果后端用Number类型回来长id 可能还会导致向下取 js number 最大值  导致多个重复id

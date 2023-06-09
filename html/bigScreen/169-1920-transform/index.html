@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link  type="text/css" rel="styleSheet"  href='./index.css'></style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <div class='first-line'>第一行(1920时16px)</div>
+            <div style="font-size: 16px;">橙色内容,绿色适配用的空隙,16:9时不会出现</div>
+            <div class='first-box-line'>
+                <div 
+                    class='first-line-box first-line-box1'
+                    style="font-size: 12px;"
+                >
+                    <div
+                    >
+
+                        字体: 12px(1920宽时)
+                    </div>    
+                    <div>字体小于12px时会继续缩小,留意文字换行,字体大小</div>
+                </div>
+                <div 
+                    class='first-box-gap'
+                >
+                    <div>宽度210px(1920宽时)</div>
+                    <div>字体大小16px(1920宽时)</div>
+                    <div>这里可以用margin</div>
+                </div>
+                <div 
+                    class='first-line-box first-line-box2'
+                    style="font-size: 18px;"
+                >
+                    <div
+                    >
+
+                        字体: 18px(1920宽时)
+                    </div>    
+                    <div>字体小于12px时会继续缩小,留意文字换行,字体大小</div>
+                </div>
+                <div class='first-box-gap'>
+                    <div>宽度210px(1920宽时)</div>
+                    <div>字体大小16px(1920宽时)</div>
+                    <div>这里可以用margin</div>
+                </div>
+                <div 
+                    class='first-line-box first-line-box3'
+                    style="font-size: 24px;"
+                >
+                    <div>
+
+                        字体: 24px(1920宽时)
+                    </div>    
+                    <div>字体小于12px时会继续缩小,留意文字换行,字体大小</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+function setFontSize() {
+  var container = document.getElementById('container');
+  var body = document.getElementsByTagName('body')[0];
+  var cWidth = document.documentElement.clientWidth || document.body.clientWidth;
+  var domHeight = container.offsetHeight;
+  var scale = cWidth / 1920;
+
+  window.scale = Number(scale);
+
+  var styleArray = [
+    'transform:  perspective(1px) translateZ(0) scale(' + scale + ')',
+    '-ms-transform:perspective(1px) translateZ(0) scale(' + scale + ')',
+    '-webkit-transform: perspective(1px) translateZ(0) scale(' + scale + ')',
+    '-moz-transform: perspective(1px) translateZ(0) scale(' + scale + ')',
+    'transform-origin:0 0 0',
+    '-ms-transform-origin:0 0 0',
+    '-webkit-transform-origin:0 0 0',
+    '-moz-transform-origin:0 0 0',
+  ];
+  container.setAttribute('style', styleArray.join(';'));
+  body.setAttribute('style', 'height:' + window.scale * domHeight + 'px');
+}
+setFontSize()
+</script>

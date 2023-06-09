@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    .left {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      float: left;
+      /* 这个mr和下面的ml会叠加成40px 触发bfc都没有 浮动导致的 */
+      /* margin-right: 20px;
+      overflow: auto; */
+    }
+    .middle {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      float: left;
+      /* margin-left: 20px;
+      overflow: auto; */
+
+      margin-right: 20px;
+    }
+    .right {
+      height: 200px;
+      background-color: aqua;
+      display: flow-root;  
+      /* 不产生BFC 则是文字环绕图片的效果 浮动本来就是干这个的 */
+      /* 即浮动元素脱离文档流 不脱离文本流 浮动元素的左上和div元素的左上重叠开始排布 但是不遮盖div内的文本 */
+      /* margin-left: 20px; */ 
+      /* 这个margin-left 没有任何作用 但如果没有BFC 这个ml20就有用了*/
+      /* margin-right: 20px; */
+      /* 这个mr会生效 */
+    }
+  </style>
+</head>
+<!-- 宽度不指定 是100% -->
+<body>
+  <div style='height: 100%;'>
+    <div class="left"></div>
+    <div class="middle"></div>
+    <div class="right">sdf<div>test</div></div>
+  </div>
+</body>
+</html>

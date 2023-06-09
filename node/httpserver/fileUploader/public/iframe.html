@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>iframe 上传文件</title>
+</head>
+
+<body>
+    <h1>iframe 上传文件</h1>
+    <form id="upload-form">
+        <input type="file" id="upload" name="upload" />
+        <br>
+        <br>
+        <input type="submit" value="上传" />
+        <br>
+        <br>
+        <a href="/uploads">点这里查看服务器上传文件列表</a>
+    </form>
+</body>
+<script>
+    var form = document.querySelector('#upload-form');
+    form.addEventListener('submit', function () {
+        console.log('submit');
+
+        var seed = Math.floor(Math.random() * 1000);
+        var id = "uploader-frame-" + seed;
+        var callback = "uploader-cb-" + seed;
+    });
+</script>
+
+</html>
