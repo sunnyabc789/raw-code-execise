@@ -5,6 +5,9 @@ create table if not exists yuji_lms_test2
  (pid String COMMENT 'ID',code String,type String,msg String,log_day String,log_hour String,log_time String,log_second String,sdk_version String,sampling String,times String,url String,query String,hash String,origin_url String,ip String,client_ts String,server_ts String,delay String,referrer String,spm_a String,spm_b String,spm_c String,title String,uid String,username String,user_type String,sid String,pv_id String,env String,version String,device_id String,device_brand String,device_model String,app_key String,app_name String,app_version String,browser_name String,browser_version String,os String,os_version String,ua String,sr String,dpr String,net_type String,downlink String,isp String,country String,province String,city String,visible String,grey String,p1 String,p2 String,p3 String,p4 String,p5 String,p6 String,p7 String,p8 String,p9 String,p10 String,p11 String,p12 String,p13 String,p14 String,p15 String,p16 String,p17 String,p18 String,p19 String,p20 String,p21 String,p22 String,p23 String,p24 String,p25 String,c1 String,c2 String,c3 String,c4 String,c5 String,c6 String,c7 String,c8 String,c9 String,c10 String,app_id String,source String,ds String) LIFECYCLE 7 ;
 
 1.2 插入数据
+insert into  
+insert overwride 有区别 注意 
+
 insert into table yuji_lms_test1 (
     pid, uid, username, type, log_second, url, title, pv_id, c1  
 ) values 
