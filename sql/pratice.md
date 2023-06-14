@@ -76,3 +76,5 @@ COALESCE里的所有参数类型必须保持一致，nvl可以不一致
 9.with...as(写长查询时使用，相当于创建临时表)
 具体可参考教程with as 使用
 10.ROW_NUMBER() OVER(分组排序，非常好用！)
+
+URL_DECODE 字符函数 解码URI
