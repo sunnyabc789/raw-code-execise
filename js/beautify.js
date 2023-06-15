@@ -1,5 +1,5 @@
 // 代码格式化
-{/* <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script> */}
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script> 
 const options = {
     "indent_size": "1",
     "indent_char": "\t",
