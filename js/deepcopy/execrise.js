@@ -21,3 +21,6 @@ function clone(source, _map = new Map()) {
   return source;
 }
 console.log(clone(obj));
+
+// 浏览器现在原生api支持了
+// structuredClone
