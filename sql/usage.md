@@ -46,5 +46,8 @@ WHERE EXISTS (
 );
 上述语句中，SET语句使用了子查询的方式更新salary，WHERE语句用于限制更新范围（不更新未匹配到的记录）。注意，在使用子查询更新时，需要保证子查询结果的唯一性，否则会报错。
 
+-- 测试用
+select a.cnpd_product_name, b.product_name from pagechangedata_fullstack a left join cnpd_product_name_app_name_rel b on a.app_name = b.git_name
+-- 生效用
 update pagechangedata_fullstack a left join cnpd_product_name_app_name_rel b on a.app_name = b.git_name 
 set a.cnpd_product_name = b.product_name
