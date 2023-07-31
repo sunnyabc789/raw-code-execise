@@ -51,3 +51,12 @@ select a.cnpd_product_name, b.product_name from pagechangedata_fullstack a left 
 -- 生效用
 update pagechangedata_fullstack a left join cnpd_product_name_app_name_rel b on a.app_name = b.git_name 
 set a.cnpd_product_name = b.product_name
+
+-- 清空表
+insert overwrite table table_name SELECT * FROM table_name WHERE 1=0;
+-- hive 清空表
+TRUNCATE TABLE table_name; 
+-- 先drop 再create 会有赋权问题
+-- delete 是逐行删  比较慢
+DELETE FROM table_name;
+
