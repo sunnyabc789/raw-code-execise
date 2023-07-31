@@ -60,3 +60,7 @@ TRUNCATE TABLE table_name;
 -- delete 是逐行删  比较慢
 DELETE FROM table_name;
 
+
+-- insert
+Insert into Table2(field1,field2,…) values (select value1,value2,… from Table1)
+Insert into Table2(field1,field2,…) select value1,value2,… from Table1
