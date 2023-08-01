@@ -64,3 +64,34 @@ DELETE FROM table_name;
 -- insert
 Insert into Table2(field1,field2,…) values (select value1,value2,… from Table1)
 Insert into Table2(field1,field2,…) select value1,value2,… from Table1
+单条插入语句写法
+INSERT INTO [表名] （[列名],[列名]) 
+VALUES（[列值],[列值]);
+
+批量插入语句写法
+INSERT INTO 
+[表名]([列名],[列名]) 
+ VALUES
+([列值],[列值])),
+([列值],[列值])),
+([列值],[列值]));
+
+
+-- excel生成insert语句
+=CONCATENATE("INSERT INTO TABLENAME(id,name1,name2) VALUES('"&B2&"','"&C2&"','"&D2&"'')")
+
+
+-- 重复字段合并 多行合并一行 (区别于去重)
+select git_id, b_line_id, group_concat(product_id) from t group by git_id, b_line_id
+git_id b_line_id product_id
+a        A        1
+a        A        2
+b        A        1
+
+git_id b_line_id product_id
+a         A        1,2
+b         A          1
+
+
+EXCEPT: 求第二个数据集在第一个数据集中的补集。即输出第一个数据集包含而第二个数据集不包含的记录。
+
