@@ -4,6 +4,7 @@ const RemoveAlicdnPlugin = require('../loader/removeAlicdnPlugin')
 
 
   onGetWebpackConfig(config => {
+    // 资源前缀  微前端下 这东西是可以编译时 运行时(基座上) 修改的  被坑过 注意下
     config.output.publicPath(envParamsJSON.publicPath || '/');
 
     config
