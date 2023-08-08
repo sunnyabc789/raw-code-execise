@@ -95,3 +95,16 @@ b         A          1
 
 EXCEPT: 求第二个数据集在第一个数据集中的补集。即输出第一个数据集包含而第二个数据集不包含的记录。
 
+
+
+
+
+查找重复项
+SELECT
+    id, COUNT(*)
+FROM
+    page
+GROUP BY
+    id
+HAVING 
+    COUNT(*) > 1;
