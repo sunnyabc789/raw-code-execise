@@ -110,3 +110,8 @@ HAVING
     COUNT(*) > 1;
 -- 现有 12166 12167为重复记录 not_standard_packages 不同 导致重复 底表问题
 -- 发现方式(排查问题思路): 1211条记录同步到Mysql只剩1209 推测为主键冲突 即有重复id
+
+
+唯一键
+如果id为数字类型 用uuid 不是hash md5
+或者基于hash生成uuid
