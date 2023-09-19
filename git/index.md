@@ -113,3 +113,40 @@ $ git fetch origin
 $ git checkout master
 $ git reset --hard origin/master
 $ git clean -d --force
+
+
+## git补全方法
+本文亲测可用。
+老版本macos方法：
+1、打开网页，https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+全选，复制内容。
+2、在~/.bash_profile文件(如果没有需要创建)中加入以下内容即可生效
+
+if  \[ -f ~/.git-completion.bash \]; then
+    . ~/.git-completion.bash   
+fi
+3、在~/.git-completion.bash(如果没有需要创建)中加入第一步复制的内容
+4、分别执行 source ~/.bash_profile, source ~/.git-completion.bash
+5、执行chmod a+x ~/.git-completion.bash
+6、重启命令行工具~~~~
+
+新版本macos方法：
+因为新版本mac已经使用zsh
+
+新建~/.zsh_fpath/目录
+
+mkdir ~/.zsh_fpath
+下载
+
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh -OL
+拷贝git-completion.zsh
+将git源码下的.git-completion.zsh移动到~/.zsh_fpath目录下
+
+mv git-completion.zsh ~/.zsh_fpath/
+打开~/.zshrc 文件,输入以下内容
+
+# git 自动补全
+zstyle ':completion:*:*:git:*' script ~/.zsh_fpath/.git-completion.zsh
+fpath=(~/.zsh_fpath $fpath)
+autoload -Uz compinit && compinit
+保存退出，重新打开新的terminal即可使用git时使用tab键体验命令补全功能
