@@ -115,3 +115,7 @@ HAVING
 唯一键
 如果id为数字类型 用uuid 不是hash md5
 或者基于hash生成uuid
+
+
+mysql json字段条件查询
+SELECT * FROM lnp_resource where `feature` -> '$.firstLineHaul' = true
