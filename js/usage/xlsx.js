@@ -26,3 +26,15 @@ const data = [
   XLSX.utils.book_append_sheet(newWorkBook, worksheet, "SheetJS");
   // 写入文件, CHROME浏览器会直接下载, 后面的是文件名称和后缀
   XLSX.writeFile(newWorkBook, "订单.xlsx");
+
+
+
+
+
+// 读取
+const XLSX = require('xlsx');
+const workbook = XLSX.readFile('file.xlsx');
+const sheetName = workbook.SheetNames[0];
+const worksheet = workbook.Sheets[sheetName];
+const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+console.log(jsonData);
