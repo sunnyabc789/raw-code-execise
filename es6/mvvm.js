@@ -14,6 +14,17 @@ Object.defineProperty(obj, "text", {
     span.innerHTML = newVal;
   },
 });
+
+Object.defineProperty(window, 'efg', {
+  set(value) {
+    console.log(value,'value===')
+    this.value = value
+  },
+  get() {
+    return this.value
+  },
+})
+
 input.addEventListener("keyup", function (e) {
   obj.text = e.target.value;
 });
