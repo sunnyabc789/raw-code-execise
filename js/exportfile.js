@@ -23,6 +23,7 @@ function exportFile(filename, textContent, type = 'text/csv;charset=utf-8;') {
 //   pdf: application/pdf
 
 
+
 // utf8 -> blob
 
 function utf8ToBinary(utf8String) {
@@ -67,4 +68,4 @@ function dataURLtoBlob(dataurl) {
 }
 
 let data = 'data:image/png;base64,iVBORw0KG'
-
+// base64可能会以 JVBERi0xLjQK 这个起头  如果没给编码格式 可以猜一猜
