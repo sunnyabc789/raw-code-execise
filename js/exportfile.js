@@ -54,5 +54,17 @@ function dataURLtoBlob(dataurl) {
 	});
 }
 
+
+function dataURLtoBlob(dataurl) {
+    // 如果没给编码信息 可以不需要这段
+	let	bstr = atob(dataurl)
+		n = bstr.length,
+		u8arr = new Uint8Array(n);
+	while (n--) {
+		u8arr[n] = bstr.charCodeAt(n);
+	}
+	return new Blob([u8arr]);
+}
+
 let data = 'data:image/png;base64,iVBORw0KG'
 
