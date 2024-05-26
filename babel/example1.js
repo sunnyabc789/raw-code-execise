@@ -276,6 +276,29 @@ const ast = parser.parse(originalCode, BABEL_OPTIONS)
   // fs.writeFileSync(filePath, output.code, 'utf-8');
 }
 
+// let files = glob.globSync(
+//   // 起始路径  命令行所在路径  改为path工具生成
+//   [
+//     './src/**/*.jsx',
+//     './src/**/*.tsx',
+//     './src/**/*.ts', 
+//     './src/**/*.js'
+//   ],
+//   // ['src/**/*.js'],
+//   { 
+//     ignore: [
+//       // 'node_modules/**' 
+//       '**/types/**',
+//       '**/*.d.ts'
+//     ]
+//     // ignore: {
+//     //   ignored: p => {
+//     //     console.log(p,'p===')
+//     //     return true 
+//     //   }
+//     // }
+//   }
+// )
 
 // 批量转换
 let files = glob.sync(FILE_PATTERN)
