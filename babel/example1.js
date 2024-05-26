@@ -1,3 +1,7 @@
+// 这样做会破坏格式化  空格不会变成ast  或者可以用orginCode做字符replace
+// 这个更合适?
+// https://github.com/facebook/jscodeshift
+
 const parser = require('@babel/parser')
 const t = require('@babel/types')
 const traverse = require('@babel/traverse').default
