@@ -7,3 +7,9 @@ Sources控制台 -> 最下方需要配合出现console控制台 没有的话 点
 
 3.覆写文件
 sources控制台 -> page等那个tab 找到 override tab -> 打开功能 -> 回到page 右键文件 save for override
+
+
+4.根据行号列号定位代码
+ctrl + G (mac, windows不清楚)
+vscode
+command + p   filename:rowno:colno
