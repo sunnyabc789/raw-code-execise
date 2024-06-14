@@ -1,0 +1,35 @@
+<!-- 锚点定位 position-anchor -->
+ <!-- 支持度很低 chrome125.0.6422.142 上试了不行 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .efg {
+            top: anchor(bottom) + 10px; /* 相对于锚点底部下方 10px */  
+            left: anchor(left); /* 相对于锚点左侧 */  
+            /* position-anchor: anchor3; */
+            /* 隐式锚点 */
+            position: absolute;
+            top: -10px;
+            /* 相对于锚点的底部 */
+            left: 0;
+            /* 相对于锚点的左侧 */
+            /* 其他样式... */
+        }
+    </style>
+</head>
+
+<body>
+    <div >1</div>
+    <div>2</div>
+    <div anchor-name="anchor3">3</div>
+    <div>4</div>
+    <div>5</div>
+    <div class="efg">6</div>
+</body>
+
+</html>
