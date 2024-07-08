@@ -17,6 +17,8 @@ const server = http.createServer((req, res) => {
       // res.setHeader("Access-Control-Allow-Origin", "http://bp.daily.cainiao.test");
       res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+      // : Request header field pragma is not allowed by Access-Control-Allow-Headers 
+      // 看Network控制台 options那条请求 把 Access-Control-Request-Headers: 里的东西换到这里来
       res.setHeader("Access-Control-Allow-Headers", 'Accept,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Requested-With,Token,x-access-token');
       res.setHeader( "Access-Control-Allow-Credentials", "true");
       res.setHeader( "X-Content-Type-Options", "nosniff");
