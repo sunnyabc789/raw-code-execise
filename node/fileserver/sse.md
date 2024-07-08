@@ -147,3 +147,84 @@ http.createServer(function (req, res) {
 }).listen(8844, "127.0.0.1");
 
 ```
+
+# 客户端实现
+```
+let reader 
+fetch("http://localhost:3000/stream", {
+  
+}).then(response => {
+    
+    reader = response.body.getReader(); 
+})
+
+setInterval(() => {
+  const textDecoder = new TextDecoder("utf-8");
+
+  reader.read().then(({ done, value }) => {
+    const chunk = textDecoder.decode(value, { stream: true });
+    const lines = chunk.split("\n");
+    console.log(chunk,'chunk===')
+    console.log(lines)
+
+     for (const line of lines) {
+      if (line.startsWith("data: ")) {
+
+      // const data = {
+      //          id: id,
+      //          message: `This is message ${id}`,
+      //          timestamp: +new Date(),
+      //        };
+       // const json = line.slice(6);
+       // const data = JSON.parse(json);
+       // const p = document.createElement("p");
+      } else if (line.startsWith("event: end")) {
+       // const p = document.createElement("p");
+       // p.textContent = "End of stream";
+       // messagesDiv.appendChild(p);
+        return;
+      }
+    }
+  })
+}, 1000)
+
+
+// 或者
+fetch("http://localhost:3000/sse").then((response) => {
+    const reader = response.body.getReader();
+    return new ReadableStream({
+      start(controller) {
+        function push() {
+          reader.read().then(({ done, value }) => {
+            if (done) {
+              controller.close();
+              return;
+            }
+
+            const chunk = textDecoder.decode(value, { stream: true });
+            const lines = chunk.split("\n");
+
+            for (const line of lines) {
+              if (line.startsWith("data: ")) {
+                const json = line.slice(6);
+                const data = JSON.parse(json);
+                const p = document.createElement("p");
+                p.textContent = `ID: ${data.id}, Message: ${data.message}, Timestamp: ${data.timestamp}`;
+                messagesDiv.appendChild(p);
+              } else if (line.startsWith("event: end")) {
+                const p = document.createElement("p");
+                p.textContent = "End of stream";
+                messagesDiv.appendChild(p);
+                return;
+              }
+            }
+
+            push();
+          });
+        }
+
+        push();
+      },
+    });
+
+```
