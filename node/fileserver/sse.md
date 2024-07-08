@@ -127,11 +127,20 @@ http.createServer(function (req, res) {
     res.write("data: " + (new Date()) + "\n\n");
     res.write("data: " + (new Date()) + "\n\n");
 
+    let times = 0
     interval = setInterval(function () {
+      if (times === 3) {
+        console.log(times,'here===')
+        times = 0
+        res.write("end" + "\n\n");
+        clearInterval(interval)
+        res.end('')
+        return 
+      }
       res.write("data: " + (new Date()) + "\n\n");
     }, 1000);
 
-    req.connection.addListener("close", function () {
+    req.addListener("close", function () {
       clearInterval(interval);
     }, false);
   }
