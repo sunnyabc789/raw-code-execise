@@ -206,15 +206,7 @@ fetch("http://localhost:3000/sse").then((response) => {
 
             for (const line of lines) {
               if (line.startsWith("data: ")) {
-                const json = line.slice(6);
-                const data = JSON.parse(json);
-                const p = document.createElement("p");
-                p.textContent = `ID: ${data.id}, Message: ${data.message}, Timestamp: ${data.timestamp}`;
-                messagesDiv.appendChild(p);
               } else if (line.startsWith("event: end")) {
-                const p = document.createElement("p");
-                p.textContent = "End of stream";
-                messagesDiv.appendChild(p);
                 return;
               }
             }
