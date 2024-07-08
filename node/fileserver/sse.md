@@ -158,6 +158,9 @@ fetch("http://localhost:3000/stream", {
     reader = response.body.getReader(); 
 })
 
+// 不自己搞textDecoder 用三方库
+// const reader = response.body.pipeThrough(parser).getReader();
+// parser = @streamparser/json-whatwg  
 setInterval(() => {
   const textDecoder = new TextDecoder("utf-8");
 
