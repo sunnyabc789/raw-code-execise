@@ -285,3 +285,14 @@ console.log(2)
     );
 
     // 2 -> 4 如果是 console.log(v) 错误会被抛出
+
+
+
+    // ES15新特性
+    // const {promise, resolve, reject} = Promise.withResolvers();
+
+    // promise.then((data) => {
+    //   console.log(data,'d==')
+    // })
+
+    // resolve()
