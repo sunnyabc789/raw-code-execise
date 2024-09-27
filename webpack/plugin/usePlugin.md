@@ -3,6 +3,7 @@
 const webpack = require('webpack');
 const RemoveAlicdnPlugin = require('../loader/removeAlicdnPlugin')
 
+  // cross-env ENV_PARAMS=local node abc.js
   const { USE_HTTP, ENV_PARAMS } = process.env;
 
   let envParamsJSON = {}

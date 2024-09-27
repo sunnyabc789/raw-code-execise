@@ -2,17 +2,25 @@
 // 这个更合适?
 // https://github.com/facebook/jscodeshift
 
-const parser = require('@babel/parser')
-const t = require('@babel/types')
-const traverse = require('@babel/traverse').default
-const generate = require("@babel/generator").default;
+const parser = require('@babel/parser') // 7.25.6  
+const t = require('@babel/types') //  7.25.6  
+const traverse = require('@babel/traverse').default // 7.25.6  
+const generate = require("@babel/generator").default; //  7.25.6  
 // const template = require('@babel/template').default;
 
 const glob = require('glob');
 const fs = require('fs');
 // const path = require('path');
 
+// 删除节点
+// path.remove();
+
 // 这东西 百度搜 babel/types 生成可选链  或者用template生成出一个来  然后看 t.xx的ts定义 
+
+// !!! t.isJSXElement(node)  打印 node.type 例如 import xx from './xx'  type: 'ImportDeclaration' t.isImportDeclaration
+// 数组 t.isArrayExpression(node)  
+// 导出 ExportDefaultDeclaration
+
 // const getNode = template('`customPath=${abc}-efg&text=${abc}-efg`')
 // console.log(JSON.stringify(getNode(),null,2))
 // 看t.templateLiteral的定义

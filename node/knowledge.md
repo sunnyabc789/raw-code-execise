@@ -87,3 +87,11 @@ Buffer.isBuffer()
 indexOf
 ```
 
+
+文件操作
+fs
+existsSync
+mkdirSync
+fs.rmSync(tempPath, { recursive: true })
+fs.writeFileSync(tempPath + '/prototype.ts', originalCode1, 'utf-8');
+readFileSync(path, 'utf-8)
