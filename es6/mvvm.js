@@ -38,4 +38,4 @@ const handler = {
     Reflect.set(target, key, value)
   }
 }
-new Proxy(obj, handler)
+obj = new Proxy(obj, handler)

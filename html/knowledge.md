@@ -6,3 +6,6 @@
 
 给需要继承高度的子容器 设置position absolute 脱离文档流
 父容器也需要设置 position
+
+但这样会给drag留问题  导致没高度的无法触发onDrop?  +符号不出现?
+详见drag目录

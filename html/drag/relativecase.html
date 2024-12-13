@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div
+            draggable="true"
+        >
+            abc
+        </div>
+    </div>
+
+    <div
+        style="height: 300px;overflow: scroll;"
+    >
+
+        <div 
+            tabindex="1" 
+            id="1_multiSRTTableItem" 
+            draggable="true" 
+            style="position: relative;"
+            ondrop="onDrop()"
+            ondragenter="onDrop()"
+            ondragleave="onDrop()"
+            ondragover="onDrop()"
+        >
+            <div
+                style="position: absolute; height: 100%; width: 30px; background-color: rgb(112, 138, 219); border-radius: 10px 0px 0px 10px; display: flex; justify-content: center; align-items: center; color: rgb(255, 255, 255); font-weight: 600;">
+                1</div>
+            <div
+                style="background-color: rgb(213, 241, 232); padding: 10px 20px 10px 10px; border-radius: 0px 10px 10px 0px; margin-left: 30px;">
+                <div class="SimpleRuleTree">
+                    <form>
+                        <div dir="ltr" role="row" class="css-1rcf9oq cn-next-row" data-name="Row">
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            placeholder="⁯⁯请输入⁯⁯‪‎⁡⁢⁯⁯" height="100%" autocomplete="off" value=""></span>
+                                </div>
+                            </div>
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            context="[object Object]" rowidx="0" placeholder="请输入" name="right"
+                                            height="100%" autocomplete="off" value=""></span> </div>
+                            </div>
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            context="[object Object]" rowidx="0" placeholder="请输入" name="field3"
+                                            height="100%" autocomplete="off" value=""></span> </div>
+                            </div>
+                            <div dir="ltr" role="gridcell" class="css-1rcf9oq cn-next-col" data-name="Col">
+                                <div class="css-1rcf9oq cn-next-box my-box" data-name="CnBox"
+                                    style="flex-flow: row; align-items: center;"><i data-name="CnIcon"
+                                        class="css-1rcf9oq cn-next-icon cn-ui-icon"><svg class="cn-next-icon-remote"
+                                            focusable="false" style="margin: 0px; cursor: pointer;">
+                                            <use xlink:href="#icon-add-r-color"></use>
+                                        </svg></i></div>
+                            </div>
+                        </div>
+                        <div dir="ltr" role="row" class="css-1rcf9oq cn-next-row" data-name="Row">
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            placeholder="⁯⁯请输入⁯⁯‪‎⁡⁢⁯⁯" height="100%" autocomplete="off" value=""></span>
+                                </div>
+                            </div>
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            context="[object Object]" rowidx="1" placeholder="请输入" name="right"
+                                            height="100%" autocomplete="off" value=""></span> </div>
+                            </div>
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            context="[object Object]" rowidx="1" placeholder="请输入" name="field3"
+                                            height="100%" autocomplete="off" value=""></span> </div>
+                            </div>
+                            <div dir="ltr" role="gridcell" class="css-1rcf9oq cn-next-col" data-name="Col">
+                                <div class="css-1rcf9oq cn-next-box my-box" data-name="CnBox"
+                                    style="flex-flow: row; align-items: center;"><i data-name="CnIcon"
+                                        class="css-1rcf9oq cn-next-icon cn-ui-icon"><svg class="cn-next-icon-remote"
+                                            focusable="false" style="margin: 0px 5px 0px 0px; cursor: pointer;">
+                                            <use xlink:href="#icon-add-r-color"></use>
+                                        </svg></i><i data-name="CnIcon" class="css-1rcf9oq cn-next-icon cn-ui-icon"><svg
+                                            class="cn-next-icon-remote" focusable="false" color="#284cc0"
+                                            style="margin: 0px 0px 0px 5px; cursor: pointer;">
+                                            <use xlink:href="#icon-minus-r"></use>
+                                        </svg></i></div>
+                            </div>
+                        </div>
+                        <div dir="ltr" role="row" class="css-1rcf9oq cn-next-row" data-name="Row">
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            placeholder="⁯⁯请输入⁯⁯‪‎⁡⁢⁯⁯" height="100%" autocomplete="off" value=""></span>
+                                </div>
+                            </div>
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            context="[object Object]" rowidx="2" placeholder="请输入" name="right"
+                                            height="100%" autocomplete="off" value=""></span> </div>
+                            </div>
+                            <div class="cn-next-form-item" style="margin-right: 10px;">
+                                <div class="cn-next-form-item-control"><span data-name="CnInput"
+                                        class="css-1rcf9oq cn-next-input" style="width: 180px;"><input
+                                            context="[object Object]" rowidx="2" placeholder="请输入" name="field3"
+                                            height="100%" autocomplete="off" value=""></span> </div>
+                            </div>
+                            <div dir="ltr" role="gridcell" class="css-1rcf9oq cn-next-col" data-name="Col">
+                                <div class="css-1rcf9oq cn-next-box my-box" data-name="CnBox"
+                                    style="flex-flow: row; align-items: center;"><i data-name="CnIcon"
+                                        class="css-1rcf9oq cn-next-icon cn-ui-icon"><svg class="cn-next-icon-remote"
+                                            focusable="false" style="margin: 0px 5px 0px 0px; cursor: pointer;">
+                                            <use xlink:href="#icon-add-r-color"></use>
+                                        </svg></i><i data-name="CnIcon" class="css-1rcf9oq cn-next-icon cn-ui-icon"><svg
+                                            class="cn-next-icon-remote" focusable="false" color="#284cc0"
+                                            style="margin: 0px 0px 0px 5px; cursor: pointer;">
+                                            <use xlink:href="#icon-minus-r"></use>
+                                        </svg></i></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function onDrop(e) {
+        console.log(e,'e===')
+    }
+</script>
+
+</html>

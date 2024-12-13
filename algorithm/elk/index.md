@@ -3,6 +3,8 @@
 实测并不是特别好用
 
 https://x6.antv.antgroup.com/zh/examples/showcase/practices/#elk
+https://github.com/kieler/elkjs?tab=readme-ov-file
+https://eclipse.dev/elk/
 
 import { Graph, Cell } from '@antv/x6'
 import ELK, { ElkNode, ElkEdge, ElkExtendedEdge } from 'elkjs'
