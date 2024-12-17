@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <textarea style="width:1000px" cols="10" rows="10" className="textarea">
+        Try to select this text: [SelectMe] then drag and drop it over here:
+        [Drop here: ]. When dnd-react provider is used this will fail. If you
+        remove the DnDProvider tag (Along with the Example component to avoid
+        compilation errors) then dragging inside this textarea will work fine.
+      </textarea>
+      <div
+    
+      >
+        <p
+            id="a"
+            ondragstart="dragStart(event)"
+            draggable="true"
+        >abc</p>
+      </div>
+      <div
+        id="b"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+        style="width:100px;height:100px;background-color: red;"
+      >
+        efg
+      </div>
+</body>
+</html>
+<script>
+    // react-dnd低版本 无法传入rootElement 用window
+  
+    let target = window
+    const func = (e) => {
+        e.preventDefault();
+        e.stopPropagation()
+    }
+      // 开启下面这些监听  
+      // textarea 或 手动指定draggable等拖拽都会被屏蔽  这个此处没复现 
+      // textarea内部的倒是被屏蔽了
+    // target.addEventListener('dragStart', func, true)
+    // target.addEventListener('dragend', func, true)
+
+    // target.addEventListener('dragenter', func, true)
+
+    // target.addEventListener('dragleave', func, true)
+
+    // target.addEventListener('dragover', func, true)
+
+
+</script>
+<script>
+
+function dragStart(event) {
+    console.log('start===');
+    // 复现时 加了这个又可以开始拖拽了
+    // event.dataTransfer.setData("Text", event.target.id);
+}
+
+// 不绑定这个 不触发drop事件
+function allowDrop(event) {
+    event.preventDefault();
+}
+function drop(event) {
+    console.log('drop===')
+    event.preventDefault();
+}
+</script>
