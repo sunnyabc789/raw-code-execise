@@ -1,13 +1,16 @@
 
 ## 关键词 publicPath  host不对  currentScript问题
 如果 webpackConfig.output 没指定publicPath  则在控制台 commpand+p 搜 publicPath.js 出来时这个
+
 var scriptUrl;
 if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
 var document = __webpack_require__.g.document;
 if (!scriptUrl && document) {
+    // 一般能读取到currentScript不会出问题
 	if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
 		scriptUrl = document.currentScript.src;
 	if (!scriptUrl) {
+        // 关键代码  一般出问题都是走到这里了
 		var scripts = document.getElementsByTagName("script");
 		if(scripts.length) {
 			var i = scripts.length - 1;
@@ -129,6 +132,7 @@ Search控制台搜 ChunkLoadError
 在底座上也要加上组件包
 
 具体问题代码行暂时还是没定位到
+猜测还是jsonp异步问题 在微前端框架中的存在时延导致的missing
 
 另看到一篇其他原因的chunkloaderror missing类型
 ```
