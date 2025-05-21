@@ -145,6 +145,12 @@ console.log(flag)
 
 //Node.js v10开始 有 semver模块可以用
 
+const { compare } = require('semver');
+ 
+console.log(compare('1.2.3', '1.2.4')); // 输出 -1
+console.log(compare('1.3', '1.2.4')); // 输出 1
+console.log(compare('1.2.3', '1.2.3')); // 输出 0
+
 // 版本号排序   这里做不了3个1.1.1的排序 可以学分数 分字符的方法
 // 反例
 function sortNumber(a, b) {
