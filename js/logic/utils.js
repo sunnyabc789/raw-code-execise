@@ -143,6 +143,7 @@ console.log([1, 2, 3].findIndex((item) => item === 3)) //2 如果数组中无值
 const flag = [{ age: 1 }, { age: 2 }].some(v => JSON.stringify(v) === JSON.stringify({ age: 2 }))
 console.log(flag)
 
+//Node.js v10开始 有 semver模块可以用
 
 // 版本号排序   这里做不了3个1.1.1的排序 可以学分数 分字符的方法
 // 反例
