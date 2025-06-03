@@ -77,6 +77,8 @@ $ git branch | grep 'fix/' | xargs git branch -d
 $ git stash
 $ git checkout correct_branch
 $ git stash pop
+
+git stash list
 12、在错误的分支上做了修改同时已提交？（比如错误地提交到了主干）
 
 # 新建分支
