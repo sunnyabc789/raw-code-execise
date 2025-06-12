@@ -1,6 +1,7 @@
 fork的仓库 拉原来仓库的master 或提交
 git remote add upstream 原始仓库的URL
-
+git checkout master
+git pull upstream master
 
 1、设置错误的远程库怎么办？
 
