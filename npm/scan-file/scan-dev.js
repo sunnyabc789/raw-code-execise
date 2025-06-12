@@ -32,7 +32,7 @@ function getAllDirs(mypath = '.') {
           // });
           const data = fs.readFileSync(path.join(mypath,item), 'utf8')
           if (!data) return 
-          if (data.includes('@ali/4ever')) {  // 目标依赖
+          if (data.includes('@xx/4ever')) {  // 目标依赖
             console.log(path.join(mypath,item),'here===')
           }
           if (data.includes('cn-intelli-assistant')) {

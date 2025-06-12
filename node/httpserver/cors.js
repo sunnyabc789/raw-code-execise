@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     //     "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
     //     "Access-Control-Allow-Credentials": "true"
     //   });
-      // res.setHeader("Access-Control-Allow-Origin", "http://bp.daily.cainiao.test");
+      // res.setHeader("Access-Control-Allow-Origin", "http://bp.daily.bird.test");
       res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
       // : Request header field pragma is not allowed by Access-Control-Allow-Headers 

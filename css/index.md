@@ -1,12 +1,12 @@
 1.css-loader ~作用
 node_modules别名 架构层在 css-loader里定义的
-@import '~@alife/theme-coneplatform/variables.scss';
+@import '~@xxfe/theme-coneplatform/variables.scss';
 
 2.scss sass  
 以fusion使用为例
 2.1.key 头变量
 ```
-import '~@alifd/next/lib/core/style/_global.scss'
+import '~@xxfd/next/lib/core/style/_global.scss'
   .#{$css-prefix}menu {
     border-radius: 0;
     border: none;

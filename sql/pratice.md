@@ -12,10 +12,10 @@ insert into table yuji_lms_test1 (
     pid, uid, username, type, log_second, url, title, pv_id, c1  
 ) values 
 (
-    'lms', '1', '余霁',  'pv', '20230607121519', 'https%3A%2F%2Fl.cainiao.com%2Foperate%2Findirect-labor', '实操A', '1', 'a,b'
+    'lms', '1', '余霁',  'pv', '20230607121519', 'https%3A%2F%2Fl.bird.com%2Foperate%2Findirect-labor', '实操A', '1', 'a,b'
 ),
 (
-      'lms', '1', '余霁', 'api', '20230607121529', 'https%3A%2F%2Fl.cainiao.com%2Foperate%2Findirect-labor', '实操A', '1', 'a,b'
+      'lms', '1', '余霁', 'api', '20230607121529', 'https%3A%2F%2Fl.bird.com%2Foperate%2Findirect-labor', '实操A', '1', 'a,b'
 ),
 
 1.3 根据报表需求 想办法聚合

@@ -53,7 +53,7 @@ location.hash.split('?')[1]  // 或其他方法
 例如
 
 浏览器地址栏访问
-https://pre-op.cainiao-inc.com/?SSO_TICKET=4bce49e8a4394af6858c13005fcebd0020bcf700#/sml/consignmentManage
+https://pre-op.bird-inc.com/?SSO_TICKET=4bce49e8a4394af6858c13005fcebd0020bcf700#/sml/consignmentManage
 
 路由 #/sml/consignmentManage
 参数?SSO_TICKET=4bce49e8a4394af6858c13005fcebd0020bcf700
@@ -63,7 +63,7 @@ location.search 可以获取到 ?SSO_TICKET=4bce49e8a4394af6858c13005fcebd0020bc
 点击编辑按钮
 
 前端路由跳转到
-https://pre-op.cainiao-inc.com/?SSO_TICKET=4bce49e8a4394af6858c13005fcebd0020bcf700#/sml/createTyo?tyoCode=TYO00946730120135883
+https://pre-op.bird-inc.com/?SSO_TICKET=4bce49e8a4394af6858c13005fcebd0020bcf700#/sml/createTyo?tyoCode=TYO00946730120135883
 
 携带参数 ?tyoCode=TYO00946730120135883
 

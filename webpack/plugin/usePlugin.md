@@ -1,7 +1,7 @@
 - webpack-chain
 ```
 const webpack = require('webpack');
-const RemoveAlicdnPlugin = require('../loader/removeAlicdnPlugin')
+const RemovexxcdnPlugin = require('../loader/removexxcdnPlugin')
 
   // cross-env ENV_PARAMS=local node abc.js
   const { USE_HTTP, ENV_PARAMS } = process.env;
@@ -28,9 +28,9 @@ const RemoveAlicdnPlugin = require('../loader/removeAlicdnPlugin')
 
     config
       // 定义插件名称
-      .plugin('test.removeAlicdn')
+      .plugin('test.removexxcdn')
       // 第一项为具体插件，第二项为插件参数
-      .use(RemoveAlicdnPlugin, [
+      .use(RemovexxcdnPlugin, [
         {
           ...(envParamsJSON.processENV || {})
         },
@@ -40,6 +40,6 @@ const RemoveAlicdnPlugin = require('../loader/removeAlicdnPlugin')
 - webpack.config
 ```
 plugins: [
-    new RemoveAlicdnPlugin(options)
+    new RemovexxcdnPlugin(options)
 ]
 ```

@@ -1,3 +1,7 @@
+fork的仓库 拉原来仓库的master 或提交
+git remote add upstream 原始仓库的URL
+
+
 1、设置错误的远程库怎么办？
 
 $ git remote -v
@@ -16,11 +20,11 @@ $ git commit --amend --only
 $ git commit --amend --only -m 'xxx'
 4、提交时用了错误的用户名或邮箱？（单次）
 
-$ git commit --amend --no-edit --author "yunqian <yunqian@alibaba-inc.com>"
+$ git commit --amend --no-edit --author "yunqian <yunqian@xxx-inc.com>"
 或者
 
 $ git config --global author.name yunqian
-$ git config --global author.email yunqian@alibaba-inc.com
+$ git config --global author.email yunqian@xxx-inc.com
 $ git commit --amend --reset-author --no-edit
 5、最后一次提交不想要了？
 

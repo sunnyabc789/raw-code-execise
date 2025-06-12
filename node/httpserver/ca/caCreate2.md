@@ -17,7 +17,7 @@ new WebpackDevServer(webpack(merge(webpackConfig, { externals })), {
       'Access-Control-Allow-Origin': '*',
     },
     allowedHosts: [
-      ".cainiao-inc.com"
+      ".bird-inc.com"
     ],
     hot: true,
     https,

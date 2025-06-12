@@ -11,7 +11,7 @@ EventSource API
     if ('EventSource' in window) {
 
             // 建立SSE连接，创建EventSource实例，支持跨越
-            let source = new EventSource("https://aistudio.alibaba-inc.com/api/aiapp/run/LbCnydgZQXQ/1.1.8", 
+            let source = new EventSource("https://aistudio.xxx-inc.com/api/aiapp/run/LbCnydgZQXQ/1.1.8", 
             { 
               withCredentials: true,
               accept: "*/*",
@@ -56,7 +56,7 @@ EventSource API
           controllerRef.current = new AbortController();
           let signal = controllerRef.current.signal;
 
-          fetch("https://aistudio.alibaba-inc.com/api/aiapp/run/LbCnydgZQXQ/latest", {
+          fetch("https://aistudio.xxx-inc.com/api/aiapp/run/LbCnydgZQXQ/latest", {
             signal,
             "headers": {
               "X-AK": "65667cbd812f32641ffe495d9ff52568",
@@ -78,7 +78,7 @@ EventSource API
               "x-os-request-app-code": "GLOBAL-PACKAGE-NEWWORK",
               "x-xsrf-token": "3c774e07-cd5f-4c64-a7cb-7a469c45253a"
             },
-            "referrer": "https://pre-os.gpn.cainiao-inc.com/ferform/gexp360?__next_lowcode_pageId__=212374",
+            "referrer": "https://pre-os.gpn.bird-inc.com/ferform/gexp360?__next_lowcode_pageId__=212374",
             "referrerPolicy": "no-referrer-when-downgrade",
             "body": `{\"empId\": \"330986\",\"question\": \"美国流速分析\",\"sessionId\": \"${+new Date() +window._GATEWAY_PF.workerNo}\",\"stream\": true,\"returnRunLog\": true}`,
             "method": "POST",

@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     //     "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
     //     "Access-Control-Allow-Credentials": "true"
     //   });
-      // res.setHeader("Access-Control-Allow-Origin", "http://bp.daily.cainiao.test");
+      // res.setHeader("Access-Control-Allow-Origin", "http://bp.daily.bird.test");
       res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
       res.setHeader("Access-Control-Allow-Headers", 'Accept,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Requested-With,Token,x-access-token');
