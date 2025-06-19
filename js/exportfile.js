@@ -1,5 +1,6 @@
 // createObjectURL
 // 它可以将Blob、File等二进制文件转换为浏览器可以直接显示的URL地址，从而方便进行展示、下载等操作 
+// 也可以用于img标签的src属性  真的能展示出图片来 本质就是浏览器给缓存到本地了 
 // 图片可以放到img标签  pdf等window.open()
 
 function exportFile(filename, textContent, type = 'text/csv;charset=utf-8;') {
