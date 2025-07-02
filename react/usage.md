@@ -11,3 +11,11 @@ function content({_context}) {
     </>
   )
 }
+
+
+shouldComponentUpdate 可以用第三个参数实现  antd看到的代码
+useMemo(() => {
+  return 'abc'
+}, [state.xx], (prev, next) => {
+  return _.isEqual()
+})

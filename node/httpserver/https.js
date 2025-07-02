@@ -11,7 +11,8 @@ const httpsServer = https.createServer(credentials, (req, res) => {
     console.log(pathname,'===')
     if (pathname === "/") {
       res.writeHead(200, {
-        'Set-Cookie': ['myCookie=test;SameSite=None;Secure;domain=.domain.com']
+        'Set-Cookie': ['myCookie=test;SameSite=None;Secure;domain=.domain.com'],
+        // "location": "https://baidu.com" 301
       });
     //   res.writeHead(200, [
     //     ['Set-Cookie', 'mycookie1=value1'],
