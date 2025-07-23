@@ -9,6 +9,9 @@ e.dataTransfer.getData
 onDragLeave onDragEnter
 可能存在子元素上也会触发onDragLeave 问题
 getData取不到问题  
+getData要接收一个参数 mimeType  或者 setData时的第一个值  
+  let clipboardData = event.clipboardData || window.clipboardData;
+  clipboardData.types [] 或者这个
 
 解决方案 onDragEnter 自行标记变量  onDragLeave判断变量是否激活状态来控制
 
