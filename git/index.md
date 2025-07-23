@@ -2,6 +2,8 @@ fork的仓库 拉原来仓库的master 或提交
 git remote add upstream 原始仓库的URL
 git checkout master
 git pull upstream master
+// fork的太远 需要手动允许
+git pull upstream master --allow-unrelated-histories
 
 git remote 看有哪些
 git remote remove upstream
@@ -17,6 +19,8 @@ $ git remote add upstream {{url}}
 # 1
 $ git fetch upstream
 $ git merge upstream/master
+git 
+git merge upstream/master --allow-unrelated-histories
 # 或者 2
 $ git pull upstream main
 3、提交信息写错了怎么办？
