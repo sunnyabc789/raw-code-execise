@@ -3,6 +3,10 @@ git remote add upstream 原始仓库的URL
 git checkout master
 git pull upstream master
 
+git remote 看有哪些
+git remote remove upstream
+git pull upstream v1.1.0 
+
 1、设置错误的远程库怎么办？
 
 $ git remote -v
