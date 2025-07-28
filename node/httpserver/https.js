@@ -23,6 +23,29 @@ const httpsServer = https.createServer(credentials, (req, res) => {
       });
     }
 
+    if (pathname === '/postbody') {
+      let body = '';
+
+      // 收集 POST 数据
+      req.on('data', chunk => {
+        body += chunk;
+      });
+
+      // 数据接收完毕
+      req.on('end', () => {
+        console.log('POST 数据:', body);
+        try {
+          JSON.parse(body)
+        } catch (e) {
+          
+        }
+        res.writeHead(200, {
+          'Content-Type': 'text/plain'
+        });
+        res.end('数据已接收\n');
+      });
+    }
+
     if (pathname === "/index.js") {
       res.writeHead(200, {
         'Set-Cookie': ['myCookie=test;SameSite=None;Secure;domain=.domain.com']
