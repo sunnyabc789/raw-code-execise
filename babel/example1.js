@@ -1,3 +1,4 @@
+// babel 改文件
 // 这样做会破坏格式化  空格不会变成ast  或者可以用orginCode做字符replace
 // 这个更合适?
 // https://github.com/facebook/jscodeshift
