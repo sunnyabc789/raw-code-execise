@@ -56,10 +56,9 @@ EventSource API
           controllerRef.current = new AbortController();
           let signal = controllerRef.current.signal;
 
-          fetch("https://aistudio.xxx-inc.com/api/aiapp/run/LbCnydgZQXQ/latest", {
+          fetch("https://xx.xxx-inc.com/api/aiapp/run/xx/latest", {
             signal,
             "headers": {
-              "X-AK": "65667cbd812f32641ffe495d9ff52568",
               "accept": "*/*",
               "accept-language": "zh-CN,zh;q=0.9,ru;q=0.8,en;q=0.7",
               "bx-v": "2.5.28",
@@ -75,12 +74,9 @@ EventSource API
               "sec-fetch-site": "same-origin",
               "tenantid": "default",
               "user-zone": "Asia/Shanghai",
-              "x-os-request-app-code": "GLOBAL-PACKAGE-NEWWORK",
-              "x-xsrf-token": "3c774e07-cd5f-4c64-a7cb-7a469c45253a"
             },
-            "referrer": "https://pre-os.gpn.bird-inc.com/ferform/gexp360?__next_lowcode_pageId__=212374",
             "referrerPolicy": "no-referrer-when-downgrade",
-            "body": `{\"empId\": \"330986\",\"question\": \"美国流速分析\",\"sessionId\": \"${+new Date() +window._GATEWAY_PF.workerNo}\",\"stream\": true,\"returnRunLog\": true}`,
+            "body": `{\"empId\": \"123\",\"question\": \"美流分析\",\"sessionId\": \"${+new Date() +window._GATEWAY_PF.workerNo}\",\"stream\": true,\"returnRunLog\": true}`,
             "method": "POST",
             "mode": "cors",
             "credentials": "include"
