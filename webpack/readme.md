@@ -162,3 +162,13 @@ const App = React.lazy(() => lazyRetry(() => import(/* webpackChunkName: "main-a
 
 ## deoptimised 
 提示带这个 就是包体积过大 webpack专有名词  百度一搜都是webpack
+
+
+## Watchpack Error (watcher): 
+// webpack 监听文件数量过多导致无法热更新 解决方法
+webpackConfig.watch = true;
+webpackConfig.watchOptions = {
+  ignored: /node_modules/,
+  aggregateTimeout: 300,
+  poll: 1000
+}

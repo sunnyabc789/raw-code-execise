@@ -21,7 +21,7 @@ const Com = () => {
 - main包
 ```
   const s = React.lazy((() => Promise.all([e.e(810), e.e(479)]).then(e.bind(e, 1479))));
-  // 静态分析法 无法确定 xx-ui是哪个bundle  dev态 bundle名不是hash product态 bundle名变成了hash 无法找到
+  // 静态分析 无法确定 xx-ui是哪个bundle  dev态 bundle名不是hash product态 bundle名变成了hash 无法找到
   // 找到以后 可以这样动态添加上去
      __webpack_modules__['@xxfe/xx-ui'] = (module, _exports, _require) => {
         module.exports = window.Next;

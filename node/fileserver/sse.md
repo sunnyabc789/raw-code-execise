@@ -149,6 +149,12 @@ http.createServer(function (req, res) {
 ```
 
 # 客户端实现
+
+fetch 处理存在一定缺陷
+SSE实际上是一种协议，那么既然是协议自然就需要有固定的格式，在text/event-stream的响应格式中，每组数据都是以\n\n分隔的，而在组中的数据如果需要传递多种类型，则需要以\n分隔。当然实际上这里的\n\n也可以看作独占空内容行且末尾为\n，因此内容组合而成为\n\n
+
+虽然我们认为每组数据都是以\n\n分隔的，但是在实际的text/event-stream规范中，解析末尾字符的\n实际上可能存在三种情况，即CR、LF、CRLF，如果需要实现完备的解析器则需要注意这个问题。
+
 ```
 let reader 
 fetch("http://localhost:3000/stream", {

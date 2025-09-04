@@ -23,6 +23,40 @@ const httpsServer = https.createServer(credentials, (req, res) => {
       });
     }
 
+    // node sse
+    if (pathname === '/getSse') {
+      let count = 0;
+      res.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Connection': 'keep-alive',
+      });
+      res.write(`event: open\n`);
+      res.write('data: ok\n\n')
+      const intervalId = setInterval(() => {
+        if (count > 2) {
+          res.write(`event: close\n`);
+          res.write('data: 234\n\n')
+          res.write(`event: message\n`);
+          res.write('data: 123');
+          clearInterval(intervalId);
+          return;
+        }
+        count++
+        const message = `Data at ${new Date().toLocaleTimeString()}`;
+        res.write(`data: ${message}\n\n`);
+      }, 2000);
+
+      // 当客户端断开连接时，清除定时器
+      // req如果监听data end 好像也会触发这里 有点问题
+      req.on('close', () => {
+        console.log('close===');
+        clearInterval(intervalId);
+        res.write(`data: null`);
+        //  res.write(`null`);
+      });
+    }
+
+
     if (pathname === '/postbody') {
       let body = '';
 
