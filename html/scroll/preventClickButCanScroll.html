@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 禁止点击等事件 滚动也给禁止了 */
+        .scrolled {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div
+        ref="{containerRef}"
+    >
+        <iframe />
+    </div>
+</body>
+</html>
+<script>
+    /**     
+     * 元素不让点击 
+     * 但滚动也不行了
+     * 需要保留滚动
+     * 看 html/scroll 下用例
+     */
+    let timer = null;
+    if (containerRef?.current) {
+      containerRef.current.addEventListener('wheel', function (event) {
+        iframeRef.current.classList.remove("scrolled");
+        if (timer) {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            timer = null;
+            iframeRef.current.classList.add("scrolled");
+          }, 300)
+        } else {
+          timer = setTimeout(() => {
+            timer = null;
+            iframeRef.current.classList.add("scrolled");
+          }, 300)
+        }
+
+      })
+    }
+    // 同时在window上加click监听 禁止点击事件传播  只有这个应该也够了
+    iframe.contentWindow.addEventListener('click', (e) => {
+      console.log(e,'e===')
+      e.stopPropagation()
+    }, true)
+</script>

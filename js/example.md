@@ -48,3 +48,27 @@ function blobToBase64(blob) {
     });
 }
 ```
+
+# base64转blob
+```
+function base64ToBlob(base64String: string, contentType: string) {
+  // 标准base64 可能有 mime前缀 此处没有识别
+  // 先解码base64字符串
+  const byteCharacters = atob(base64String);
+  // 创建一个字节数组
+  const byteArrays = [];
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const sliceSize = 512;
+    const end =
+      offset + sliceSize > byteCharacters.length ? byteCharacters.length : offset + sliceSize;
+    const byteNumbers = new Array(end - offset);
+    for (let i = offset; i < end; i++) {
+      byteNumbers[i - offset] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+  // 创建Blob对象
+  return new Blob(byteArrays, { type: contentType });
+}
+```

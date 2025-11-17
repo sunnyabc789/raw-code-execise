@@ -1,4 +1,5 @@
 
+// loader先执行 loader执行顺序和配置顺序相反 最后一个先执行
 class RemovexxcdnPlugin {
     constructor(options) {
         this.options = options

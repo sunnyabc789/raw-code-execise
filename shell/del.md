@@ -25,4 +25,9 @@ find . -name ".git" -type d -prune -exec rm -rf '{}' +  这个目录也大
 
 
 
+删目录下指定文件
+TARGET_DIR="test"
+find "$TARGET_DIR" -name "*.md" -type f -delete
+
+
 
